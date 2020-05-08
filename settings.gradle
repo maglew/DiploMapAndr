@@ -1,0 +1,2 @@
+rootProject.name='DiplomMapAndr'
+include ':app'
