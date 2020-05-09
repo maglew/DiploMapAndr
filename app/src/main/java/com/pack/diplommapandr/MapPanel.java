@@ -21,9 +21,10 @@ public class MapPanel extends SurfaceView implements SurfaceHolder.Callback
     boolean moveRegime=true;
     boolean delregime=false;
     private MainThread mainThread;
-DrawMap drawmap;
-int size=1;
-
+    DrawMap drawmap;
+    int size=1;
+TouchManager touchManager;
+MapCamera mapCamera;
 
 
     public MapPanel(Context context, AttributeSet attributeSet)
@@ -33,6 +34,8 @@ int size=1;
         mainThread= new MainThread(getHolder(),this);
         drawmap=new DrawMap();
         Activity MA=(Activity)context;
+        touchManager=new TouchManager();
+        mapCamera=new MapCamera();
     }
 
 
@@ -54,7 +57,9 @@ int size=1;
 
     public void tick()
     {
-drawmap.tick(worldLocation,size);
+        mapCamera.tick();
+drawmap.tick(mapCamera.relgetWorldLoc(),size);
+
     }
 
     public void render(Canvas canvas)
@@ -65,6 +70,8 @@ drawmap.tick(worldLocation,size);
         paint.setColor(Color.WHITE);
 //canvas.drawPoint(100,100,paint  );
 drawmap.render(canvas);
+touchManager.render(canvas);
+mapCamera.render(canvas);
 
     }
 
@@ -85,6 +92,7 @@ drawmap.render(canvas);
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        touchManager.setevent(event);
       //  currentTouchCoord =new Point(event.getX(),event.getY());
 /*
               switch (event.getAction()) {
@@ -116,22 +124,6 @@ drawmap.render(canvas);
        // currentTouchCoord =new PointF(event.getX(),event.getY());
         return true;
     }
-
-
-
-    public boolean isDelregime() {
-        return delregime;
-    }
-
-    public void setDelregime(boolean delregime) {
-        this.delregime = delregime;
-    }
-
-
-
-
-
-
 
 }
 
