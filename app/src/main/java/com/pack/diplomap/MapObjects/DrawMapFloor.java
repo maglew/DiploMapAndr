@@ -1,10 +1,13 @@
-package com.pack.diplommapandr;
+package com.pack.diplomap.MapObjects;
 
 import android.graphics.Canvas;
-import android.graphics.Point;
 
-public class DrawMapFloor
+
+import java.io.Serializable;
+
+public class DrawMapFloor implements Serializable
 {
+    private static final long serialVersionUID = -7515152604847457796L;
     public DrawObjects drawObjects;
 
     public DrawMapFloor()
@@ -12,7 +15,7 @@ public class DrawMapFloor
         drawObjects = new DrawObjects();
     }
 
-    public void tick(Point wordloc, int size)
+    public void tick(MyPoint wordloc, int size)
     {
         drawObjects.tick(wordloc,size);
     }

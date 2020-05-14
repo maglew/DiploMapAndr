@@ -1,22 +1,23 @@
-package com.pack.diplommapandr;
+package com.pack.diplomap.MapObjects;
 
 import android.graphics.Canvas;
-import android.graphics.Point;
 
+
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
-public class Room extends MapElement
+public class Room extends MapElement implements Serializable
 {
+    private static final long serialVersionUID = -1315152604847457796L;
 
     public ArrayList<Wall> walls = new ArrayList<>();
     public ArrayList<Edge> edges = new ArrayList<>();
-    public ArrayList<Point> dest = new ArrayList<>();
+        public ArrayList<MyPoint> dest = new ArrayList<>();
 
 
     public Room(Edge A, Edge B, Edge C, Edge D)
     {
-        location = new Point((A.location.x+ C.location.x)/2, (A.location.y + C.location.y) / 2);
+        location = new MyPoint((A.location.x+ C.location.x)/2, (A.location.y + C.location.y) / 2);
         relativeLocation = location;
 
         this.movable = true;
@@ -42,23 +43,65 @@ public class Room extends MapElement
         bordType.add(1);
         bordType.add(1);*/
 
-        dest.add(new Point(0, 0));
-        dest.add(new Point(0, 0));
-        dest.add(new Point(0, 0));
-        dest.add(new Point(0, 0));
+        dest.add(new MyPoint(0, 0));
+        dest.add(new MyPoint(0, 0));
+        dest.add(new MyPoint(0, 0));
+        dest.add(new MyPoint(0, 0));
 
         for (int i = 0; i < dest.size(); i++)
         {
             dest.get(i).set(location.x - edges.get(i).location.x, location.y - edges.get(i).location.y);
         }
+        elemid =++numInstances +"R";
+    }
+
+    public Room()
+    {
+
+        location = new MyPoint(0, 0);
+        relativeLocation = location;
+
+        this.movable = true;
+        //  this.id = Guid.NewGuid();
+
+        this.edges.add(new Edge(new MyPoint(0,0)));
+        this.edges.add(new Edge(new MyPoint(0,0)));
+        this.edges.add(new Edge(new MyPoint(0,0)));
+        this.edges.add(new Edge(new MyPoint(0,0)));
+
+        walls.add(new Wall(new Edge(new MyPoint(0,0)),new Edge(new MyPoint(0,0))));
+        walls.add(new Wall(new Edge(new MyPoint(0,0)), new Edge(new MyPoint(0,0))));
+        walls.add(new Wall(new Edge(new MyPoint(0,0)), new Edge(new MyPoint(0,0))));
+        walls.add(new Wall(new Edge(new MyPoint(0,0)), new Edge(new MyPoint(0,0))));
+
+        touchzone.add(edges.get(0).relativeLocation);
+        touchzone.add(edges.get(0).relativeLocation);
+        touchzone.add(edges.get(0).relativeLocation);
+        touchzone.add(edges.get(0).relativeLocation);
+/*
+        bordType.add(0);
+        bordType.add(1);
+        bordType.add(1);
+        bordType.add(1);*/
+
+        dest.add(new MyPoint(0, 0));
+        dest.add(new MyPoint(0, 0));
+        dest.add(new MyPoint(0, 0));
+        dest.add(new MyPoint(0, 0));
+
+        for (int i = 0; i < dest.size(); i++)
+        {
+            dest.get(i).set(location.x - edges.get(i).location.x, location.y - edges.get(i).location.y);
+        }
+        elemid =++MapElement.numInstances+"R";
     }
 
 @Override
-    public  void tick(Point wordloc, int size)
+    public  void tick(MyPoint wordloc, int size)
 {
 
 
-    relativeLocation = new Point(wordloc.x + location.x, wordloc.y + location.y);
+    relativeLocation = new MyPoint(wordloc.x + location.x, wordloc.y + location.y);
 
     for (int i = 0; i < dest.size(); i++)
     {

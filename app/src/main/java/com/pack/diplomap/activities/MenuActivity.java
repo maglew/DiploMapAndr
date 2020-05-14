@@ -1,4 +1,4 @@
-package com.pack.diplommapandr.activities;
+package com.pack.diplomap.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 

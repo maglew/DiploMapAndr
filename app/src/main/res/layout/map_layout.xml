@@ -4,15 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    tools:context=".activities.MapActivity">
+    android:gravity="center|right"
+    tools:context="com.pack.diplomap.activities.MapActivity">
 
-    <com.pack.diplommapandr.MapPanel
+    <com.pack.diplomap.MapPanel
 
         android:id="@+id/canvasPanelSing"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center|right"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/savebutt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="save" />
+
+            <Button
+                android:id="@+id/loadbutt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="load" />
+
+            <Button
+                android:id="@+id/addbutt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="add" />
+        </LinearLayout>
+    </LinearLayout>
 
 
 </FrameLayout>

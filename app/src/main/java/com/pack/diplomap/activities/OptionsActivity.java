@@ -1,4 +1,4 @@
-package com.pack.diplommapandr.activities;
+package com.pack.diplomap.activities;
 
 import android.app.Activity;
 import android.os.Bundle;

@@ -1,12 +1,15 @@
-package com.pack.diplommapandr;
+package com.pack.diplomap.MapObjects;
 
 import android.graphics.Canvas;
-import android.graphics.Point;
 
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class DrawObjects {
+public class DrawObjects implements Serializable
+{
+    private static final long serialVersionUID = -8515152604847457796L;
 
     public  ArrayList<MapElement> elements = new ArrayList<>();
     public  ArrayList<Edge> edges = new ArrayList<>();
@@ -40,7 +43,7 @@ public class DrawObjects {
     }
 
 
-    public void tick(Point worldloc, int size)
+    public void tick(MyPoint worldloc, int size)
     {
         Iterator<MapElement> itermo=elements.iterator();
         while(itermo.hasNext())
@@ -91,7 +94,7 @@ public class DrawObjects {
     }
 
 
-    public  void moveElement(int id, Point coord)
+    public  void moveElement(int id, MyPoint coord)
     {
         elements.get(id).move(coord);
     }
@@ -109,7 +112,7 @@ public class DrawObjects {
 */
 
 
-    public  void addNewEdge(Point coord)
+    public  void addNewEdge(MyPoint coord)
     {
         // elements.add(new com.pack.diplommapandr.Edge(coord));
         edges.add(new Edge(coord));

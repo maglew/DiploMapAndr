@@ -1,39 +1,36 @@
-package com.pack.diplommapandr;
+package com.pack.diplomap.MapObjects;
 
 import android.graphics.Canvas;
-import android.graphics.Point;
 
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
-public abstract class MapElement
+public abstract class MapElement implements Serializable
 {
-    // public Rectangle touchrect = new Rectangle(0, 0, 0, 0);
+    private static final long serialVersionUID = -3515152604847457796L;
+
     public String text = "";
 
 
-    public ArrayList<Point> touchzone = new ArrayList<>();
+        public ArrayList<MyPoint> touchzone = new ArrayList<>();
    // public ArrayList<byte> bordType = new ArrayList<>();
-
 
     public boolean deletable = true;
 
-    public Point location = new Point(0, 0);
-    public Point relativeLocation = new Point(0, 0);
-
-    //public List<Point> locpoints = new List<Point>();
-    //public List<Point> relpoints = new List<Point>();
+        public MyPoint location = new MyPoint(0, 0);
+      public MyPoint relativeLocation = new MyPoint(0, 0);
 
 
     public int width = 10;
-    //public Guid id;
+    public String elemid;
+    public static int numInstances;
 
     public int size = 0;
     //  public int rotation;
     public boolean movable = true;
 
 
-    public  void tick(Point wordloc, int size)
+    public  void tick(MyPoint wordloc, int size)
 {
     this.size = size;
 
@@ -49,7 +46,7 @@ public abstract class MapElement
 
 }
 
-    public  void move(Point coord)
+    public  void move(MyPoint coord)
 {
 
 

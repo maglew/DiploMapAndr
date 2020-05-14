@@ -1,4 +1,4 @@
-package com.pack.diplommapandr;
+package com.pack.diplomap;
 
 
 import android.graphics.Canvas;
@@ -13,6 +13,7 @@ public class MainThread extends Thread
     private MapPanel mapPanel;
     private boolean running;
     private static Canvas canvas;
+
 
     public MainThread(SurfaceHolder surfaceHolder, MapPanel mapPanel)
     {

@@ -1,4 +1,4 @@
-package com.pack.diplommapandr;
+package com.pack.diplomap;
 
 import android.app.Activity;
 

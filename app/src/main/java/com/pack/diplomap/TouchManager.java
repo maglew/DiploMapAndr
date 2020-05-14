@@ -1,19 +1,20 @@
-package com.pack.diplommapandr;
+package com.pack.diplomap;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Point;
-import android.graphics.PointF;
+
 import android.view.MotionEvent;
+
+import com.pack.diplomap.MapObjects.MyPoint;
 
 public class TouchManager
 {
-   // PointF touchcoord=new PointF(0,0);
+   // MyPoint touchcoord=new MyPoint(0,0);
     public static boolean touched=false;
-    public static   PointF touchdown=new PointF(0,0);
-    public static   PointF grab=new PointF(0,0);
-    public static PointF touchup=new PointF(0,0);
+    public static MyPoint touchdown=new MyPoint(0,0);
+    public static   MyPoint grab=new MyPoint(0,0);
+    public static MyPoint touchup=new MyPoint(0,0);
 
     public TouchManager()
     {
@@ -38,31 +39,29 @@ public class TouchManager
 
     public void setevent(MotionEvent event)
     {
-         // touchcoord =new PointF(event.getX(),event.getY());
+         // touchcoord =new MyPoint(event.getX(),event.getY());
 
               switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-            {   touchdown.x= event.getX();
-                touchdown.y = event.getY();
-                touchup=new PointF(0,0);
+            {   touchdown=new MyPoint((int)event.getX(),(int)event.getY());
+                touchup=new MyPoint(0,0);
                 touched=true;
             }
                 break;
             case MotionEvent.ACTION_UP:
-            {   touchup.x=event.getX();
-                touchup.y=event.getY();
-          //       touchcoord=new PointF(0,0);
-           //      touchdown=new PointF(0,0);
-                 grab=new PointF(0,0);
+            {   touchup=new MyPoint((int)event.getX(),(int)event.getY());
+          //       touchcoord=new MyPoint(0,0);
+           //      touchdown=new MyPoint(0,0);
+                 grab=new MyPoint(0,0);
                // deviation.x=0;
               //  deviation.y=0;
             touched=false;
                 }
                 break;
             case MotionEvent.ACTION_MOVE:
-            {   grab.x=event.getX();
-                grab.y=event.getY();
-                touchup=new PointF(0,0);
+            {
+                grab=new MyPoint((int)event.getX(),(int)event.getY());
+                touchup=new MyPoint(0,0);
               //  deviation.x= -(pressCoord.x-moved.x);
              //   deviation.y= -(pressCoord.y-moved.y);
                 //tempDeviation= deviation;
@@ -70,7 +69,7 @@ public class TouchManager
                 break;
         }
 
-      //  touchcoord =new PointF(event.getX(),event.getY());
+      //  touchcoord =new MyPoint(event.getX(),event.getY());
 
     }
 }

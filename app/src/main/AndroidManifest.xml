@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.MenuActivity">
+        <activity android:name="com.pack.diplomap.activities.MenuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,11 +17,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.MapActivity"/>
+            android:name="com.pack.diplomap.activities.MapActivity"/>
 
         <activity
-            android:name=".activities.OptionsActivity"/>
+            android:name="com.pack.diplomap.activities.OptionsActivity"/>
 
     </application>
-
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 </manifest>

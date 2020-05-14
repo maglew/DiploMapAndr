@@ -1,41 +1,44 @@
-package com.pack.diplommapandr;
+package com.pack.diplomap;
 
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Point;
-import android.graphics.PointF;
+
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
+import com.pack.diplomap.MapObjects.DrawMap;
 
 
 public class MapPanel extends SurfaceView implements SurfaceHolder.Callback
 {
-    Point worldLocation=new Point(0,0);
-   Point currentTouchCoord =new Point(0,0);
+
     boolean moveRegime=true;
-    boolean delregime=false;
+
     private MainThread mainThread;
-    DrawMap drawmap;
+    public static DrawMap drawmap ;
     int size=1;
-TouchManager touchManager;
-MapCamera mapCamera;
+    TouchManager touchManager;
+    MapCamera mapCamera;
+public static Logs log;
+    public static int exception=0;
 
 
     public MapPanel(Context context, AttributeSet attributeSet)
     {
         super(context, attributeSet);
         getHolder().addCallback(this);
+        log=new Logs();
         mainThread= new MainThread(getHolder(),this);
         drawmap=new DrawMap();
         Activity MA=(Activity)context;
         touchManager=new TouchManager();
         mapCamera=new MapCamera();
+
     }
 
 
@@ -58,20 +61,25 @@ MapCamera mapCamera;
     public void tick()
     {
         mapCamera.tick();
-drawmap.tick(mapCamera.relgetWorldLoc(),size);
+        drawmap.tick(mapCamera.relgetWorldLoc(),size);
 
     }
 
     public void render(Canvas canvas)
     {
+        Paint p=new Paint();
+        p.setColor(Color.RED);
+
         canvas.save();
         canvas.drawColor(Color.BLACK);
-      Paint  paint=new Paint();
+        Paint  paint=new Paint();
         paint.setColor(Color.WHITE);
-//canvas.drawPoint(100,100,paint  );
-drawmap.render(canvas);
-touchManager.render(canvas);
-mapCamera.render(canvas);
+
+        drawmap.render(canvas);
+        touchManager.render(canvas);
+        mapCamera.render(canvas);
+
+        canvas.drawText("exception: "+exception,100,500,p);
 
     }
 
@@ -93,36 +101,18 @@ mapCamera.render(canvas);
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         touchManager.setevent(event);
-      //  currentTouchCoord =new Point(event.getX(),event.getY());
-/*
-              switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-            {   pressCoord.x= event.getX();
-                pressCoord.y = event.getY();}
-                break;
-            case MotionEvent.ACTION_UP:
-            {   releaseCoord.x=event.getX();
-                releaseCoord.y=event.getY();
-                deviation.x=0;
-                deviation.y=0;
-
-                }
-                break;
-            case MotionEvent.ACTION_MOVE:
-            {   moved.x=event.getX();
-                moved.y=event.getY();
-                deviation.x= -(pressCoord.x-moved.x);
-                deviation.y= -(pressCoord.y-moved.y);
-                //tempDeviation= deviation;
-            }
-                break;
-
-
-
-        }
-*/
-       // currentTouchCoord =new PointF(event.getX(),event.getY());
         return true;
+    }
+
+    public static void setmap(DrawMap map)
+    {
+drawmap=map;
+    }
+
+    public static void getmap()
+    {
+
+return;
     }
 
 }
