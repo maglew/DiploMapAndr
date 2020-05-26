@@ -3,90 +3,61 @@ package com.pack.diplomap.MapObjects;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.Rect;
 
+import com.pack.diplomap.MapCamera;
+import com.pack.diplomap.MapPanel;
+
 import java.io.Serializable;
+
+import static java.lang.Math.round;
 
 public class Edge extends MapElement implements Serializable
 {
     private static final long serialVersionUID = -2515152604847457796L;
 
 
-    MyPoint temp = new MyPoint(0, 0);
-
-    byte[] types = { 0, 1, 1, 1 };
     public Edge(MyPoint coord)
     {
-        //  bordType.addRange(types);
         this.movable = true;
-        // this.id = Guid.NewGuid();
         location = coord;
-        relativeLocation = location;
-        //locpoints.add(coord);
-        //relpoints.add(locpoints[0]);
-        //this.location = coord;
-        //this.relativeLocation = location;
 
-        this.touchzone.add(new MyPoint(relativeLocation.x - width / 2-5, relativeLocation.y - width / 2-5));
-        this.touchzone.add(new MyPoint(relativeLocation.x - width / 2 + 5, relativeLocation.y - width / 2 - 5));
-        this.touchzone.add(new MyPoint(relativeLocation.x - width / 2 + 5, relativeLocation.y - width / 2 + 5));
-        this.touchzone.add(new MyPoint(relativeLocation.x - width / 2 - 5, relativeLocation.y - width / 2 + 5));
-/*
-        bordType.add(0);
-        bordType.add(1);
-        bordType.add(1);
-        bordType.add(1);
-        */
+        this.touchzone.add(0,new MyPoint(location.x   - 10,location.y   - 10));
+        this.touchzone.add(1,new MyPoint(location.x   + 10,location.y   - 10));
+        this.touchzone.add(2,new MyPoint(location.x   + 10,location.y   + 10));
+        this.touchzone.add(3,new MyPoint(location.x   - 10,location.y   +10));
+        this.relativetouchzone=touchzone;
         elemid = ++MapElement.numInstances + "E";
     }
 
     public Edge()
     {
-        //  bordType.addRange(types);
-        this.movable = true;
-        // this.id = Guid.NewGuid();
-        location = new MyPoint(0,0);
-        relativeLocation = location;
-        //locpoints.add(coord);
-        //relpoints.add(locpoints[0]);
-        //this.location = coord;
-        //this.relativeLocation = location;
 
-        this.touchzone.add(new MyPoint(relativeLocation.x - width / 2-5, relativeLocation.y - width / 2-5));
-        this.touchzone.add(new MyPoint(relativeLocation.x - width / 2 + 5, relativeLocation.y - width / 2 - 5));
-        this.touchzone.add(new MyPoint(relativeLocation.x - width / 2 + 5, relativeLocation.y - width / 2 + 5));
-        this.touchzone.add(new MyPoint(relativeLocation.x - width / 2 - 5, relativeLocation.y - width / 2 + 5));
-/*
-        bordType.add(0);
-        bordType.add(1);
-        bordType.add(1);
-        bordType.add(1);
-        */
+        this.movable = true;
+
+        location = new MyPoint(0,0);
+
+        this.touchzone.add(0,new MyPoint(location.x   - 10,location.y   - 10));
+        this.touchzone.add(1,new MyPoint(location.x   + 10,location.y   - 10));
+        this.touchzone.add(2,new MyPoint(location.x   + 10,location.y   + 10));
+        this.touchzone.add(3,new MyPoint(location.x   - 10,location.y   +10));
+        this.relativetouchzone=touchzone;
         elemid = ++MapElement.numInstances + "E";
     }
 
 @Override
-    public  void tick(MyPoint wordloc, int size)
+    public  void tick()
 {
-    if (temp.x != wordloc.x || temp.y != wordloc.y)
+    this.relativetouchzone.set(0,new MyPoint(location.x   - 10 ,location.y   - 10));
+    this.relativetouchzone.set(1,new MyPoint(location.x   + 10,location.y   - 10));
+    this.relativetouchzone.set(2,new MyPoint(location.x   + 10,location.y   + 10));
+    this.relativetouchzone.set(3,new MyPoint(location.x   - 10,location.y   +10));
+
+    for(int i=0;i<relativetouchzone.size();i++)
     {
-        relativeLocation = new MyPoint(wordloc.x + location.x, wordloc.y + location.y );
-        temp = wordloc;
+        touchzone.set(i,new MyPoint((relativetouchzone.get(i).x)*round(MapPanel.mapCamera.getSize()),(relativetouchzone.get(i).y)*round(MapPanel.mapCamera.getSize())) );
     }
-    else
-    {
-        //      relativeLocation = new MyPoint(wordloc.x + location.x, wordloc.y + location.y);
-    }
-    //relativeLocation.x = relativeLocation.x * size;
-    //relativeLocation.y = relativeLocation.y * size;
-
-    this.touchzone.get(0).set(relativeLocation.x   - 10,relativeLocation.y   - 10);
-    this.touchzone.get(1).set(relativeLocation.x   + 10,relativeLocation.y   - 10);
-    this.touchzone.get(2).set(relativeLocation.x   + 10,relativeLocation.y   + 10);
-    this.touchzone.get(3).set(relativeLocation.x   - 10,relativeLocation.y   + 10);
-
-
-
 }
 
 @Override
@@ -94,15 +65,22 @@ public class Edge extends MapElement implements Serializable
 {
 
     Paint p=new Paint();
+    p.setColor(Color.YELLOW);
+
+    g.drawRect(location.x - width / 4, location.y - width / 4, location.x + width / 4, location.x + width / 4 ,p);
     p.setColor(Color.RED);
 
-    Rect rect=new Rect(relativeLocation.x - width / 2, relativeLocation.y - width / 2, relativeLocation.x+width / 2, relativeLocation.y + width / 2);
+Path path=new Path();
 
-    g.drawRect(rect ,p);
+path.moveTo(relativetouchzone.get(0).x,relativetouchzone.get(0).y);
+for(int i=1;i<relativetouchzone.size();i++)
+{
+    path.lineTo(relativetouchzone.get(i).x,relativetouchzone.get(i).y);
 
- //  float[]a;
-    //touchzone.toArray();
-  //  g.drawPoints ( touchzone.toArray(a[]),p);
+}
+    path.lineTo(relativetouchzone.get(relativetouchzone.size()-1).x,relativetouchzone.get(relativetouchzone.size()-1).y);
+    path.close();
+    g.drawPath(path,p);
 
 }
 /*

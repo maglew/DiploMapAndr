@@ -23,7 +23,7 @@ public class MapPanel extends SurfaceView implements SurfaceHolder.Callback
     public static DrawMap drawmap ;
     int size=1;
     TouchManager touchManager;
-    MapCamera mapCamera;
+    public static   MapCamera mapCamera;
 public static Logs log;
     public static int exception=0;
 
@@ -45,11 +45,8 @@ public static Logs log;
     @Override
     public void surfaceCreated(SurfaceHolder p1)
     {
-
         mainThread.setRunning(true);
         mainThread.start();
-
-
     }
 
     @Override
@@ -61,7 +58,7 @@ public static Logs log;
     public void tick()
     {
         mapCamera.tick();
-        drawmap.tick(mapCamera.relgetWorldLoc(),size);
+        drawmap.tick();
 
     }
 
@@ -75,10 +72,12 @@ public static Logs log;
         Paint  paint=new Paint();
         paint.setColor(Color.WHITE);
 
-        drawmap.render(canvas);
+
         touchManager.render(canvas);
         mapCamera.render(canvas);
-
+        canvas.translate(mapCamera.getWorldloc().x,mapCamera.getWorldloc().y);
+        canvas.scale(mapCamera.getSize(),mapCamera.getSize());
+        drawmap.render(canvas);
         canvas.drawText("exception: "+exception,100,500,p);
 
     }

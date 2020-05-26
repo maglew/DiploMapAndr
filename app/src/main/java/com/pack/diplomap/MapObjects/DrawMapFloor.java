@@ -15,9 +15,9 @@ public class DrawMapFloor implements Serializable
         drawObjects = new DrawObjects();
     }
 
-    public void tick(MyPoint wordloc, int size)
+    public void tick()
     {
-        drawObjects.tick(wordloc,size);
+        drawObjects.tick();
     }
 
     public void render(Canvas g)

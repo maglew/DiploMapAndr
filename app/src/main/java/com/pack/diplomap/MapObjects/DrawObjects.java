@@ -1,6 +1,7 @@
 package com.pack.diplomap.MapObjects;
 
 import android.graphics.Canvas;
+import android.graphics.Point;
 
 
 import java.io.Serializable;
@@ -43,23 +44,19 @@ public class DrawObjects implements Serializable
     }
 
 
-    public void tick(MyPoint worldloc, int size)
+    public void tick()
     {
-        Iterator<MapElement> itermo=elements.iterator();
-        while(itermo.hasNext())
+        for(MapElement me: elements)
         {
-            MapElement mo=itermo.next();
-            mo.tick(worldloc,size);
+            me.tick();
         }
     }
 
     public void render(Canvas g)
     {
-        Iterator<MapElement> itermo=elements.iterator();
-        while(itermo.hasNext())
+        for(MapElement me: elements)
         {
-            MapElement mo=itermo.next();
-            mo.render(g);
+            me.render(g);
         }
     }
 
@@ -71,12 +68,13 @@ public class DrawObjects implements Serializable
         { elements.remove((elements.get(id))); }
 
     }
-/*
+
     public  int searchObjByCoord(Point touchcoord)
     {
         int i = 0;
 
-        foreach (MapElement mo in elements)
+
+        for ( MapElement mo : elements)
         {
             if (mo.touchhit(touchcoord) && mo.deletable)
             {
@@ -87,7 +85,8 @@ public class DrawObjects implements Serializable
 
         return -1;
     }
-*/
+
+
     public  MapElement getElement(int id)
     {
         return elements.get(id);
@@ -98,41 +97,42 @@ public class DrawObjects implements Serializable
     {
         elements.get(id).move(coord);
     }
-/*
+
+
     public  void setElement(MapElement element)
     {
-        for (int i = 0; i < elements.; i++)
+        for (int i = 0; i < elements.size(); i++)
         {
-            if (elements.get(i).id== element.id)
+            if (elements.get(i).elemid== element.elemid)
             {
-                elements.get(i) = element;
+                elements.set(i,element) ;
             }
         }
     }
-*/
+
 
 
     public  void addNewEdge(MyPoint coord)
     {
-        // elements.add(new com.pack.diplommapandr.Edge(coord));
+        // elements.add(new com.com.pack.diplommapandr.Edge(coord));
         edges.add(new Edge(coord));
         rasst();
     }
 
-    /*
+
     public void addNewRoom(Point coord)
     {
 
-        edges.add(new com.pack.diplommapandr.Edge(new Point(coord.x - 50, coord.y - 50)));
-        edges.add(new com.pack.diplommapandr.Edge(new Point(coord.x + 50, coord.y - 50)));
-        edges.add(new com.pack.diplommapandr.Edge(new Point(coord.x + 50, coord.y + 50)));
-        edges.add(new com.pack.diplommapandr.Edge(new Point(coord.x - 50, coord.y + 50)));
+        edges.add(new Edge(new MyPoint(coord.x - 50, coord.y - 50)));
+        edges.add(new Edge(new MyPoint(coord.x + 50, coord.y - 50)));
+        edges.add(new Edge(new MyPoint(coord.x + 50, coord.y + 50)));
+        edges.add(new Edge(new MyPoint(coord.x - 50, coord.y + 50)));
 
-        rooms.add(new Room(edges[edges.size()-4], edges[edges.size() - 3], edges[edges.size() - 2], edges[edges.size() - 1]));
+        rooms.add(new Room(edges.get(edges.size()-4), edges.get(edges.size() - 3), edges.get(edges.size() - 2), edges.get(edges.size() - 1)));
 
         rasst();
     }
-*/
+
     public  void addNewWall(int a, int b)
     {
         walls.add(new Wall(edges.get(a-1),edges.get(b-1)));

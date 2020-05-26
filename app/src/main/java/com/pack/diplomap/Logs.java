@@ -16,7 +16,6 @@ public class Logs
 
     public Logs()
     {
-
         try {
              root = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS).toString();
              myDir = new File(root, "DiplomapAndr");
@@ -60,7 +59,7 @@ public class Logs
         MapPanel.exception++;
 
         String buf=MapPanel.exception+") "+ logstring+"\n";
-System.out.println(buf);
+        System.out.println(buf);
         try {
 
             FileWriter writer = new FileWriter(file.getAbsolutePath(), true);

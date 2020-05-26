@@ -1,6 +1,7 @@
 package com.pack.diplomap.MapObjects;
 
 import android.graphics.Canvas;
+import android.graphics.Point;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -9,32 +10,27 @@ public abstract class MapElement implements Serializable
 {
     private static final long serialVersionUID = -3515152604847457796L;
 
-    public String text = "";
-
-
-        public ArrayList<MyPoint> touchzone = new ArrayList<>();
-   // public ArrayList<byte> bordType = new ArrayList<>();
+    public ArrayList<MyPoint> touchzone = new ArrayList<>();
+    public ArrayList<MyPoint> relativetouchzone = new ArrayList<>();
 
     public boolean deletable = true;
 
-        public MyPoint location = new MyPoint(0, 0);
-      public MyPoint relativeLocation = new MyPoint(0, 0);
+    public MyPoint location = new MyPoint(0, 0);
 
 
     public int width = 10;
+
     public String elemid;
     public static int numInstances;
 
-    public int size = 0;
+    //   public int size = 0;
     //  public int rotation;
     public boolean movable = true;
 
 
-    public  void tick(MyPoint wordloc, int size)
+
+    public  void tick()
 {
-    this.size = size;
-
-
 
 
 }
@@ -54,53 +50,24 @@ public abstract class MapElement implements Serializable
 }
 
 
-/*
-
-    public virtual bool touchhit(Point coord)
-{
-    bool inpol = false;
-
-    using (var p = new GraphicsPath(touchzone.ToArray(), bordType.ToArray()))
+    public  boolean touchhit(Point coord)
     {
-        var newVal = p.IsVisible(coord);
-        if (newVal != inpol)
-        {
-            inpol = newVal;
-        }
-    }
 
-    return inpol;
-}
-*/
-
+        boolean inpol = false;
 /*
-    public virtual void setedgessize()(int size())
-{
-    //if (size() == locpoints.size())
-    //{ return; }
-    //if (size() > locpoints.size())
-    //{
-    //    for (int i = 0; i < size() - locpoints.size(); i++)
-    //    {
-    //        locpoints.add(new Point(locpoints[locpoints.size() - 1].x + 15, locpoints[locpoints.size() - 1].y + 15));
-    //        relpoints.add(new Point(locpoints[locpoints.size() - 1].x + MapCamera.worldlocation.x, locpoints[locpoints.size() - 1].y + MapCamera.worldlocation.y));
-    //        touchzone.add(locpoints.get(i));
-    //        bordType.add(1);
-
-
-    //    }
-    //}
-    //if (size() < locpoints.size())
-    //{
-    //    for (int i = locpoints.size() - 1; i > size() - 1; i--)
-    //    {
-    //        locpoints.RemoveAt(i);
-    //        relpoints.RemoveAt(i);
-    //        touchzone.RemoveAt(i);
-    //        bordType.RemoveAt(i);
-
-    //    }
-    //}
-}
+        Polygon poly=new Polygon();
+        for(int i=0;i<touchzone.size();i++)
+        {
+            poly.addPoint(touchzone.get(i).x,touchzone.get(i).y);
+        }
+        inpol=poly.contains(coord.x,coord.y);
 */
+        return inpol;
+
+
+    }
+    public  void setedgescount(int count)
+    {
+
+    }
 }

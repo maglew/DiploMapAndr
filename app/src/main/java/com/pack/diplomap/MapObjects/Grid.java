@@ -3,29 +3,29 @@ package com.pack.diplomap.MapObjects;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
 
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Grid extends MapElement implements Serializable
 {
     private static final long serialVersionUID = -1515152604847457796L;
+    int diagquads;
 
-    int rows;
-    int columns;
     int length;
     int templength = 0;
 
-
-    public Grid(int rows, int columns, int length)
+    public Grid(int diagquads,int width)
     {
         this.deletable = false;
-        this.rows = rows;
-        this.columns = columns;
-        this.length = length;
+        this.width = width;
+        this.diagquads = diagquads;
         location=new MyPoint(0, 0);
-        relativeLocation = new MyPoint(0, 0);
         elemid = ++MapElement.numInstances + "G";
+
+
 
     }
 
@@ -33,45 +33,38 @@ public class Grid extends MapElement implements Serializable
     {
 
         this.deletable = false;
-        this.rows = 10;
-        this.columns = 10;
+        this.width = 100;
+        this.diagquads = 10;
         this.length = 50;
         location=new MyPoint(0, 0);
-        relativeLocation = new MyPoint(0, 0);
+
         elemid = ++MapElement.numInstances + "G";
 
     }
 
     @Override
-    public  void tick(MyPoint relLocation, int size)
-{
+    public  void tick()
+    {
 
-    //super.tick(relLocation, size);
-    relativeLocation = new MyPoint(relLocation.x + location.y, relLocation.y + location.y);
-    //  relpoints[0].x = relpoints[0].x * size;
-    //  relpoints[0].y = relpoints[0].y * size;
-    templength = length * size;
-
-
-}
+    }
 
     @Override
-    public  void render(Canvas canvas)
-{
-
-    Paint p=new Paint();
-    p.setColor(Color.CYAN);
-    for(int i=0;i<=rows;i++)
+    public  void render(Canvas g)
     {
-        canvas.drawLine(relativeLocation.x,relativeLocation.y+templength*i,relativeLocation.x+templength*rows,relativeLocation.y+templength*i,p);
+
+        Paint p=new Paint();
+        p.setColor(Color.WHITE);
+
+        for(int i=0;i<=diagquads;i++)
+        {
+            for(int j=0;j<=diagquads;j++)
+            {
+             //   g.drawRect(location.x+width*j,location.y+width *i,location.x+width *i+width,location.y+width *i+width,p);
+            }
+        }
+
 
     }
-    for(int i=0;i<=columns;i++)
-    {
-        canvas.drawLine(relativeLocation.x+templength*i,relativeLocation.y,relativeLocation.x+templength*i,relativeLocation.y+templength*columns,p);
-    }
-
-}
 
 /*
     @Override
