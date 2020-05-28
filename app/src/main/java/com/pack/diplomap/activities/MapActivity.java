@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Spinner;
 
 import com.pack.diplomap.GameManager;
 import com.pack.diplomap.MapPanel;
@@ -53,63 +54,43 @@ public class MapActivity extends Activity
             }
         });
 
-
-        /*
-        Button inButton = findViewById(R.id.panelButtZIn);
+        Button zoominbutt = findViewById(R.id.zoominbutt);
         // Устанавливаем действие по нажатию
-        inButton.setOnClickListener(new View.OnClickListener() {
+        saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                zoom=zoom+10;
-               mapPanel.getCam().setZoom(zoom);
+                MapPanel.mapCamera.setSize(MapPanel.mapCamera.getSize()*2);
             }
         });
 
-        Button outButton = findViewById(R.id.panelButtZOut);
+        Button zoomoutbutt = findViewById(R.id.zoomoutbutt);
         // Устанавливаем действие по нажатию
-        outButton.setOnClickListener(new View.OnClickListener() {
+        saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mapPanel.getCam().getZoom()>0)
-                {zoom=zoom-10;
-                mapPanel.getCam().setZoom(zoom);}
+                MapPanel.mapCamera.setSize(MapPanel.mapCamera.getSize()/2);
             }
         });
 
-        Button alignButton = findViewById(R.id.panelButtAlign);
+        Button regimebutt = findViewById(R.id.regimebutt);
         // Устанавливаем действие по нажатию
-        alignButton.setOnClickListener(new View.OnClickListener() {
+        saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-mapPanel.getCam().setCamlocation(new MyPoint(0,0));
-            }
-        });
-
-        Button moveButton = findViewById(R.id.panelButtMoveRegime);
-        // Устанавливаем действие по нажатию
-        moveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mapPanel.isMoveRegime())
-                mapPanel.setMoveRegime(false);
+            public void onClick(View v)
+            {
+                if(MapPanel.mapInterface.getRegime()=="move")
+                    MapPanel.mapInterface.setRegime("touch");
                 else
-                mapPanel.setMoveRegime(true);
+                    MapPanel.mapInterface.setRegime("move");
             }
         });
 
-        Button delButton = findViewById(R.id.panelDelButt);
-        // Устанавливаем действие по нажатию
-        moveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mapPanel.isDelregime())
-                    mapPanel.setDelregime(false);
-                else
-                    mapPanel.setDelregime(true);
-            }
-        });
+        Spinner spinner = findViewById(R.id.floorspin);
+        String selected = spinner.getSelectedItem().toString();
+int floor=Integer.parseInt( selected);
+if(mapPanel.drawmap.selectedfloor!=floor)
+{mapPanel.drawmap.selectedfloor=floor;}
 
-*/
 
     }
 

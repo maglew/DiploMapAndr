@@ -42,6 +42,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="add" />
+
+            <Button
+                android:id="@+id/zoominbutt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="zoomin" />
+
+            <Button
+                android:id="@+id/zoomoutbutt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="zoomout" />
+
+            <Button
+                android:id="@+id/regimebutt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="regime" />
+
+            <Spinner
+                android:id="@+id/floorspin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:entries="@array/floors" />
+
         </LinearLayout>
     </LinearLayout>
 

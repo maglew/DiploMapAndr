@@ -11,12 +11,10 @@ public abstract class MapElement implements Serializable
     private static final long serialVersionUID = -3515152604847457796L;
 
     public ArrayList<MyPoint> touchzone = new ArrayList<>();
-    public ArrayList<MyPoint> relativetouchzone = new ArrayList<>();
 
     public boolean deletable = true;
 
     public MyPoint location = new MyPoint(0, 0);
-
 
     public int width = 10;
 

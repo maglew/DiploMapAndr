@@ -43,7 +43,6 @@ public class Room extends MapElement implements Serializable
         touchzone.add(edges.get(1).location);
         touchzone.add(edges.get(2).location);
         touchzone.add(edges.get(3).location);
-        relativetouchzone=touchzone;
 
         dest.add(new MyPoint(0, 0));
         dest.add(new MyPoint(0, 0));
@@ -80,7 +79,6 @@ public class Room extends MapElement implements Serializable
         touchzone.add(edges.get(1).location);
         touchzone.add(edges.get(2).location);
         touchzone.add(edges.get(3).location);
-        relativetouchzone=touchzone;
         dest.add(new MyPoint(0, 0));
         dest.add(new MyPoint(0, 0));
         dest.add(new MyPoint(0, 0));
@@ -115,15 +113,9 @@ public class Room extends MapElement implements Serializable
 
         }
 
-        for (int j = 0; j < relativetouchzone.size() ; j++)
+        for (int j = 0; j < touchzone.size() ; j++)
         {
-            relativetouchzone.set(j,new MyPoint( edges.get(j).location.x,edges.get(j).location.y));
-        }
-
-        for(int i=0;i<touchzone.size();i++)
-        {
-            touchzone.set(i,new MyPoint((relativetouchzone.get(i).x)*round(MapPanel.mapCamera.getSize()),(relativetouchzone.get(i).y)*round(MapPanel.mapCamera.getSize())) );
-
+            touchzone.set(j,new MyPoint( edges.get(j).location.x,edges.get(j).location.y));
         }
     }
 
@@ -177,39 +169,4 @@ public class Room extends MapElement implements Serializable
     }
 
 
-    public  void setedgessize(int size)
-    {
-        /*
-        if (size == edges.size())
-        {
-
-        }
-        if (size > edges.size())
-        {
-            for (int i = 0; i < size - edges.size(); i++)
-            {
-                State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.elements.add(new Edge(new MyPoint( edges.get(edges.size() - 1).location.x - 15, edges.get( edges.size() - 1).location.y - 15)));
-
-                State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.edges.add(new Edge(new MyPoint( edges.get(edges.size()-1).location.x-10, edges.get( edges.size() - 1).location.y - 10)));
-                State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.rasst();
-                edges.add(State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.edges.get( State.getCurrentState().drawMap.floors.get(State.getCurrentState().drawMap.selectedfloor).drawObjects.edges.size()-1));
-                walls.remove(walls.size()-1);
-                walls.add(new Wall(edges.get( edges.size()-2), edges.get( edges.size() - 1)));
-                walls.add(new Wall(edges.get( edges.size() - 1), edges.get( 0)));
-
-                dest.add(new MyPoint(0,0));
-                touchzone.add(edges.get( edges.size()-1).location);
-            }
-        }
-        if (size < edges.size())
-        {
-            for (int i = edges.size() - 1; i > size - 1; i--)
-            {
-                edges.remove(i);
-                dest.remove(i);
-                touchzone.remove(i);
-            }
-        }
-        */
-    }
 }

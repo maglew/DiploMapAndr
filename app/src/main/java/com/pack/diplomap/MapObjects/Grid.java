@@ -59,7 +59,8 @@ public class Grid extends MapElement implements Serializable
         {
             for(int j=0;j<=diagquads;j++)
             {
-             //   g.drawRect(location.x+width*j,location.y+width *i,location.x+width *i+width,location.y+width *i+width,p);
+                p.setStyle(Paint.Style.STROKE);
+                g.drawRect(location.x+width*j,location.y+width *i,location.x+width *i+width,location.y+width *i+width,p);
             }
         }
 

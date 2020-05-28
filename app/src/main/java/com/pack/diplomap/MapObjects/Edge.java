@@ -4,6 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.Point;
 import android.graphics.Rect;
 
 import com.pack.diplomap.MapCamera;
@@ -27,7 +28,6 @@ public class Edge extends MapElement implements Serializable
         this.touchzone.add(1,new MyPoint(location.x   + 10,location.y   - 10));
         this.touchzone.add(2,new MyPoint(location.x   + 10,location.y   + 10));
         this.touchzone.add(3,new MyPoint(location.x   - 10,location.y   +10));
-        this.relativetouchzone=touchzone;
         elemid = ++MapElement.numInstances + "E";
     }
 
@@ -42,22 +42,16 @@ public class Edge extends MapElement implements Serializable
         this.touchzone.add(1,new MyPoint(location.x   + 10,location.y   - 10));
         this.touchzone.add(2,new MyPoint(location.x   + 10,location.y   + 10));
         this.touchzone.add(3,new MyPoint(location.x   - 10,location.y   +10));
-        this.relativetouchzone=touchzone;
         elemid = ++MapElement.numInstances + "E";
     }
 
 @Override
     public  void tick()
 {
-    this.relativetouchzone.set(0,new MyPoint(location.x   - 10 ,location.y   - 10));
-    this.relativetouchzone.set(1,new MyPoint(location.x   + 10,location.y   - 10));
-    this.relativetouchzone.set(2,new MyPoint(location.x   + 10,location.y   + 10));
-    this.relativetouchzone.set(3,new MyPoint(location.x   - 10,location.y   +10));
-
-    for(int i=0;i<relativetouchzone.size();i++)
-    {
-        touchzone.set(i,new MyPoint((relativetouchzone.get(i).x)*round(MapPanel.mapCamera.getSize()),(relativetouchzone.get(i).y)*round(MapPanel.mapCamera.getSize())) );
-    }
+    this.touchzone.set(0,new MyPoint(location.x   - 10 ,location.y   - 10));
+    this.touchzone.set(1,new MyPoint(location.x   + 10,location.y   - 10));
+    this.touchzone.set(2,new MyPoint(location.x   + 10,location.y   + 10));
+    this.touchzone.set(3,new MyPoint(location.x   - 10,location.y   +10));
 }
 
 @Override
@@ -66,38 +60,32 @@ public class Edge extends MapElement implements Serializable
 
     Paint p=new Paint();
     p.setColor(Color.YELLOW);
-
     g.drawRect(location.x - width / 4, location.y - width / 4, location.x + width / 4, location.x + width / 4 ,p);
+
     p.setColor(Color.RED);
+    Path path=new Path();
+    path.moveTo(touchzone.get(0).x,touchzone.get(0).y);
+    for(int i=1;i<touchzone.size();i++)
+    {
+        path.lineTo(touchzone.get(i).x,touchzone.get(i).y);
 
-Path path=new Path();
-
-path.moveTo(relativetouchzone.get(0).x,relativetouchzone.get(0).y);
-for(int i=1;i<relativetouchzone.size();i++)
-{
-    path.lineTo(relativetouchzone.get(i).x,relativetouchzone.get(i).y);
-
-}
-    path.lineTo(relativetouchzone.get(relativetouchzone.size()-1).x,relativetouchzone.get(relativetouchzone.size()-1).y);
-    path.close();
-    g.drawPath(path,p);
+    }
+        path.lineTo(touchzone.get(touchzone.size()-1).x,touchzone.get(touchzone.size()-1).y);
+        path.close();
+        g.drawPath(path,p);
 
 }
-/*
-@Override
-    public  void move(Point coord)
-{
-    this.relativeLocation = coord;
-    this.location = new Point(relativeLocation.x- MapCamera.getWorldLoc().x, relativeLocation.y - MapCamera.getWorldLoc().y);
+    @Override
+    public  void move(MyPoint coord)
+    {
+        location = new MyPoint(coord.x, coord.y);
+    }
 
-}
-*/
 
-/*
-    public override bool touchhit(Point coord)
-{
+    @Override
+    public boolean touchhit(Point coord)
+    {
+        return super.touchhit(coord);
+    }
 
-    return base.touchhit(coord);
-}
-*/
 }

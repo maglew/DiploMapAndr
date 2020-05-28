@@ -55,8 +55,8 @@ public class MapCamera
         Paint p=new Paint();
         p.setColor(Color.YELLOW);
 
-        canvas.drawText("worldloc"+relativeworldlocation.x+"."+relativeworldlocation.y,100,485,p);
-        canvas.drawText("size: "+size,100,500,p);
+        canvas.drawText("worldloc"+relativeworldlocation.x+"."+relativeworldlocation.y,400,30,p);
+        canvas.drawText("size: "+size,400,10,p);
 
     }
 
@@ -64,7 +64,7 @@ public class MapCamera
         return size;
     }
 
-    public void setSize(int size) {
+    public void setSize(float size) {
         this.size = size;
     }
 

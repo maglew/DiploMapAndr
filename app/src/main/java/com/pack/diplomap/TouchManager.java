@@ -32,9 +32,9 @@ public class TouchManager
         Paint p=new Paint();
         p.setColor(Color.RED);
       //  canvas.drawText("touchcoord"+touchcoord.toString(),100,415,p);
-        canvas.drawText("downcoord"+touchdown.toString(),100,430,p);
-        canvas.drawText("upcoord"+touchup.toString(),100,445,p);
-        canvas.drawText("grabcoord"+grab.toString(),100,460,p);
+        canvas.drawText("downcoord"+touchdown.x+"."+touchdown.y,400,70,p);
+        canvas.drawText("upcoord"+touchup.x+"."+touchup.y,400,80,p);
+        canvas.drawText("grabcoord"+grab.x+"."+grab.y,400,90,p);
     }
 
     public void setevent(MotionEvent event)
