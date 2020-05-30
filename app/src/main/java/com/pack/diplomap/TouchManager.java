@@ -30,7 +30,7 @@ public class TouchManager
     public void render(Canvas canvas)
     {
         Paint p=new Paint();
-        p.setColor(Color.RED);
+        p.setColor(Color.GREEN);
       //  canvas.drawText("touchcoord"+touchcoord.toString(),100,415,p);
         canvas.drawText("downcoord"+touchdown.x+"."+touchdown.y,400,70,p);
         canvas.drawText("upcoord"+touchup.x+"."+touchup.y,400,80,p);

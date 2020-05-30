@@ -4,17 +4,18 @@ import android.app.Activity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Spinner;
 
 import com.pack.diplomap.GameManager;
+import com.pack.diplomap.MapObjects.DrawMap;
 import com.pack.diplomap.MapPanel;
 import com.pack.diplommapandr.R;
 
-public class MapActivity extends Activity
-{
+public class MapActivity extends Activity {
     MapPanel mapPanel;
-    int zoom=100;
+    int zoom = 100;
     //Состояние кнопки редактирования/сдвига
     private GameManager gameManager;
 
@@ -24,7 +25,7 @@ public class MapActivity extends Activity
         setContentView(R.layout.map_layout);
 
         gameManager = new GameManager(this);
-        mapPanel=findViewById(R.id.canvasPanelSing);
+        mapPanel = findViewById(R.id.canvasPanelSing);
 
         //prepareNewGame();
         Button addButton = findViewById(R.id.addbutt);
@@ -56,29 +57,28 @@ public class MapActivity extends Activity
 
         Button zoominbutt = findViewById(R.id.zoominbutt);
         // Устанавливаем действие по нажатию
-        saveButton.setOnClickListener(new View.OnClickListener() {
+        zoominbutt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MapPanel.mapCamera.setSize(MapPanel.mapCamera.getSize()*2);
+                MapPanel.mapCamera.setSize(MapPanel.mapCamera.getSize() * 2);
             }
         });
 
         Button zoomoutbutt = findViewById(R.id.zoomoutbutt);
         // Устанавливаем действие по нажатию
-        saveButton.setOnClickListener(new View.OnClickListener() {
+        zoomoutbutt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MapPanel.mapCamera.setSize(MapPanel.mapCamera.getSize()/2);
+                MapPanel.mapCamera.setSize(MapPanel.mapCamera.getSize() / 2);
             }
         });
 
         Button regimebutt = findViewById(R.id.regimebutt);
         // Устанавливаем действие по нажатию
-        saveButton.setOnClickListener(new View.OnClickListener() {
+        regimebutt.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                if(MapPanel.mapInterface.getRegime()=="move")
+            public void onClick(View v) {
+                if (MapPanel.mapInterface.getRegime() == "move")
                     MapPanel.mapInterface.setRegime("touch");
                 else
                     MapPanel.mapInterface.setRegime("move");
@@ -86,17 +86,28 @@ public class MapActivity extends Activity
         });
 
         Spinner spinner = findViewById(R.id.floorspin);
-        String selected = spinner.getSelectedItem().toString();
-int floor=Integer.parseInt( selected);
-if(mapPanel.drawmap.selectedfloor!=floor)
-{mapPanel.drawmap.selectedfloor=floor;}
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                int floor = i ;
+                if (MapPanel.drawmap.getSelectedfloor() != floor) {
+                    MapPanel.drawmap.setSelectedfloor(floor);
+                }
+             
+            }
+
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                MapPanel.drawmap.setSelectedfloor(0);
+            }
+        });
 
 
     }
 
+
+
+
     private void prepareNewGame()
     {
-
         gameManager.game_init();
     }
 }

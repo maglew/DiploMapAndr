@@ -4,6 +4,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
+import com.pack.diplomap.MapObjects.DrawMap;
+
 public class MapInterface
 {
     public  static String regime = "move";
@@ -25,9 +27,11 @@ public class MapInterface
     {
         Paint p=new Paint();
         p.setColor(Color.RED);
-
+        g.drawText("floor: "+ MapPanel.drawmap.getSelectedfloor(),400,40,p);
         g.drawText("regime:  "+regime,400,50,p);
         g.drawText("objID:  "+chosedObjId,400,60,p);
+
+
 
     }
 

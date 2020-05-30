@@ -134,4 +134,11 @@ MapPanel.log.addtolog(t.toString());
         floors.get(2).drawObjects.rasst();
     }
 
+    public int getSelectedfloor() {
+        return selectedfloor;
+    }
+
+    public void setSelectedfloor(int selectedfloor) {
+        this.selectedfloor = selectedfloor;
+    }
 }

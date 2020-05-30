@@ -29,8 +29,7 @@ public class MapCamera
 
     public  void tick()
     {
-      //  canvasW= State.getCurrentState().canvas.getWidth() ;
-      //  canvasH=State.getCurrentState().canvas.getHeight();
+
         cursor=  TouchManager.grab;
         if(TouchManager.touched &&moved==false)
         {
@@ -54,9 +53,9 @@ public class MapCamera
     {
         Paint p=new Paint();
         p.setColor(Color.YELLOW);
-
-        canvas.drawText("worldloc"+relativeworldlocation.x+"."+relativeworldlocation.y,400,30,p);
         canvas.drawText("size: "+size,400,10,p);
+        canvas.drawText("worldloc"+relativeworldlocation.x+"."+relativeworldlocation.y,400,25,p);
+
 
     }
 

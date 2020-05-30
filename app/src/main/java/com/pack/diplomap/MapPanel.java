@@ -39,7 +39,7 @@ public class MapPanel extends SurfaceView implements SurfaceHolder.Callback
         Activity MA=(Activity)context;
         touchManager=new TouchManager();
         mapCamera=new MapCamera();
-mapInterface=new MapInterface();
+        mapInterface=new MapInterface();
     }
 
 
