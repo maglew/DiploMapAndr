@@ -29,6 +29,7 @@ public class Edge extends MapElement implements Serializable
         this.touchzone.add(2,new MyPoint(location.x   + 10,location.y   + 10));
         this.touchzone.add(3,new MyPoint(location.x   - 10,location.y   +10));
         elemid = ++MapElement.numInstances + "E";
+        polygon=new MyPolygon(touchzone);
     }
 
     public Edge()
@@ -43,6 +44,7 @@ public class Edge extends MapElement implements Serializable
         this.touchzone.add(2,new MyPoint(location.x   + 10,location.y   + 10));
         this.touchzone.add(3,new MyPoint(location.x   - 10,location.y   +10));
         elemid = ++MapElement.numInstances + "E";
+        polygon=new MyPolygon(touchzone);
     }
 
 @Override
@@ -57,12 +59,13 @@ public class Edge extends MapElement implements Serializable
 @Override
     public  void render(Canvas g)
 {
-
     Paint p=new Paint();
     p.setColor(Color.YELLOW);
-    g.drawRect(location.x - width / 4, location.y - width / 4, location.x + width / 4, location.x + width / 4 ,p);
+    g.drawRect(location.x - 5 , location.y - 5 , location.x+5 , location.y+5  ,p);
 
-    p.setColor(Color.RED);
+  //  p.setColor(Color.RED);
+
+/*
     Path path=new Path();
     path.moveTo(touchzone.get(0).x,touchzone.get(0).y);
     for(int i=1;i<touchzone.size();i++)
@@ -74,6 +77,8 @@ public class Edge extends MapElement implements Serializable
         path.close();
         g.drawPath(path,p);
 
+*/
+    polygon.drawMyPolygon(g);
 }
     @Override
     public  void move(MyPoint coord)

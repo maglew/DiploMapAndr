@@ -108,6 +108,10 @@ MapPanel.log.addtolog(t.toString());
         floors.get(0).drawObjects.edges.add(new Edge(new MyPoint(200, 200)));
         floors.get(0).drawObjects.edges.add(new Edge(new MyPoint(100, 200)));
 
+        floors.get(0).drawObjects.edges.add(new Edge(new MyPoint(300, 100)));
+        floors.get(0).drawObjects.edges.add(new Edge(new MyPoint(300, 200)));
+        floors.get(0).drawObjects.edges.add(new Edge(new MyPoint(200, 300)));
+        floors.get(0).drawObjects.edges.add(new Edge(new MyPoint(100, 300)));
 
 
         floors.get(1).drawObjects.grids.add(new Grid(10, 100));

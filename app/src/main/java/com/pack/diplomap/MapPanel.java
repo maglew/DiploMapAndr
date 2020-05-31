@@ -28,7 +28,6 @@ public class MapPanel extends SurfaceView implements SurfaceHolder.Callback
     public static Logs log;
     public static int exception=0;
 
-
     public MapPanel(Context context, AttributeSet attributeSet)
     {
         super(context, attributeSet);
@@ -36,6 +35,7 @@ public class MapPanel extends SurfaceView implements SurfaceHolder.Callback
         log=new Logs();
         mainThread= new MainThread(getHolder(),this);
         drawmap=new DrawMap();
+
         Activity MA=(Activity)context;
         touchManager=new TouchManager();
         mapCamera=new MapCamera();
@@ -48,6 +48,7 @@ public class MapPanel extends SurfaceView implements SurfaceHolder.Callback
     {
         mainThread.setRunning(true);
         mainThread.start();
+        // drawmap.loadmap();
     }
 
     @Override

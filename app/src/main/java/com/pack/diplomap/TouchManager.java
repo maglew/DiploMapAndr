@@ -8,13 +8,19 @@ import android.view.MotionEvent;
 
 import com.pack.diplomap.MapObjects.MyPoint;
 
+import static java.lang.Math.round;
+
 public class TouchManager
 {
-   // MyPoint touchcoord=new MyPoint(0,0);
     public static boolean touched=false;
+
     public static MyPoint touchdown=new MyPoint(0,0);
-    public static   MyPoint grab=new MyPoint(0,0);
+    public static MyPoint grab=new MyPoint(0,0);
     public static MyPoint touchup=new MyPoint(0,0);
+
+    public static MyPoint reltouchdown=new MyPoint(0,0);
+    public static MyPoint relgrab=new MyPoint(0,0);
+    public static MyPoint reltouchup=new MyPoint(0,0);
 
     public TouchManager()
     {
@@ -44,32 +50,62 @@ public class TouchManager
               switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
             {   touchdown=new MyPoint((int)event.getX(),(int)event.getY());
+                reltouchdown=new MyPoint((int)(event.getX()-MapPanel.mapCamera.getWorldloc().x)/round((int)MapPanel.mapCamera.getSize()),(int)(event.getY()-MapPanel.mapCamera.getWorldloc().y)/round((int)MapPanel.mapCamera.getSize()));
                 touchup=new MyPoint(0,0);
+                reltouchup=new MyPoint(0,0);
                 touched=true;
             }
                 break;
             case MotionEvent.ACTION_UP:
-            {   touchup=new MyPoint((int)event.getX(),(int)event.getY());
-          //       touchcoord=new MyPoint(0,0);
-           //      touchdown=new MyPoint(0,0);
+            {
+                touchup=new MyPoint((int)event.getX(),(int)event.getY());
                  grab=new MyPoint(0,0);
-               // deviation.x=0;
-              //  deviation.y=0;
-            touched=false;
+                reltouchup=new MyPoint((int)(event.getX()-MapPanel.mapCamera.getWorldloc().x)/round((int)MapPanel.mapCamera.getSize()),(int)(event.getY()-MapPanel.mapCamera.getWorldloc().y)/round((int)MapPanel.mapCamera.getSize()));
+                relgrab=new MyPoint(0,0);
+                touched=false;
                 }
                 break;
             case MotionEvent.ACTION_MOVE:
             {
                 grab=new MyPoint((int)event.getX(),(int)event.getY());
                 touchup=new MyPoint(0,0);
-              //  deviation.x= -(pressCoord.x-moved.x);
-             //   deviation.y= -(pressCoord.y-moved.y);
-                //tempDeviation= deviation;
+                relgrab=new MyPoint((int)(event.getX()-MapPanel.mapCamera.getWorldloc().x)/round((int)MapPanel.mapCamera.getSize()),(int)(event.getY()-MapPanel.mapCamera.getWorldloc().y)/round((int)MapPanel.mapCamera.getSize()));
+                reltouchup=new MyPoint(0,0);
+
             }
                 break;
         }
 
-      //  touchcoord =new MyPoint(event.getX(),event.getY());
 
+
+    }
+
+
+    public static boolean isTouched() {
+        return touched;
+    }
+
+    public static MyPoint getTouchdown() {
+        return touchdown;
+    }
+
+    public static MyPoint getGrab() {
+        return grab;
+    }
+
+    public static MyPoint getTouchup() {
+        return touchup;
+    }
+
+    public static MyPoint getReltouchdown() {
+        return reltouchdown;
+    }
+
+    public static MyPoint getRelgrab() {
+        return relgrab;
+    }
+
+    public static MyPoint getReltouchup() {
+        return reltouchup;
     }
 }

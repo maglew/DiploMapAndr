@@ -30,14 +30,15 @@ public class MapCamera
     public  void tick()
     {
 
-        cursor=  TouchManager.grab;
+        cursor=TouchManager.grab;
+
         if(TouchManager.touched &&moved==false)
         {
             razn.x = (int) TouchManager.touchdown.x- relativeworldlocation.x;
             razn.y = (int) TouchManager.touchdown.y - relativeworldlocation.y;
         }
 
-        if(TouchManager.grab.x!=0&& TouchManager.grab.y!=0)
+        if(TouchManager.grab.x!=0&& TouchManager.grab.y!=0&&MapInterface.getRegime()=="move")
         {
             relativeworldlocation=new MyPoint((int) TouchManager.grab .x-razn.x,(int) TouchManager.grab.y-razn.y);
             moved=true;

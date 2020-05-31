@@ -72,8 +72,6 @@ public class DrawObjects implements Serializable
     public  int searchObjByCoord(Point touchcoord)
     {
         int i = 0;
-
-
         for ( MapElement mo : elements)
         {
             if (mo.touchhit(touchcoord) && mo.deletable)

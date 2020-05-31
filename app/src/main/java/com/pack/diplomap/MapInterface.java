@@ -3,6 +3,7 @@ package com.pack.diplomap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Point;
 
 import com.pack.diplomap.MapObjects.DrawMap;
 
@@ -20,7 +21,8 @@ public class MapInterface
 
     public void tick()
     {
-
+        if(TouchManager.isTouched()&&regime!="move")
+        chosedObjId= MapPanel.drawmap.floors.get(MapPanel.drawmap.selectedfloor).drawObjects.searchObjByCoord(new Point(TouchManager.getTouchdown().x, TouchManager.getTouchdown().y));
     }
 
     public void render(Canvas g)

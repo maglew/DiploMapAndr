@@ -54,6 +54,7 @@ public class Room extends MapElement implements Serializable
             dest.get(i).set(location.x - edges.get(i).location.x, location.y - edges.get(i).location.y);
         }
         elemid =++MapElement.numInstances+"R";
+        polygon=new MyPolygon(touchzone);
     }
 
     public Room()
@@ -89,6 +90,7 @@ public class Room extends MapElement implements Serializable
             dest.get(i).set(location.x - edges.get(i).location.x, location.y - edges.get(i).location.y);
         }
         elemid =++MapElement.numInstances+"R";
+        polygon=new MyPolygon(touchzone);
     }
 
     @Override
@@ -147,6 +149,8 @@ public class Room extends MapElement implements Serializable
         g.drawPolygon(poly);
 
  */
+
+        polygon.drawMyPolygon(g);
     }
 
     @Override

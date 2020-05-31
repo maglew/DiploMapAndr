@@ -92,7 +92,7 @@ public class MapActivity extends Activity {
                 if (MapPanel.drawmap.getSelectedfloor() != floor) {
                     MapPanel.drawmap.setSelectedfloor(floor);
                 }
-             
+
             }
 
             public void onNothingSelected(AdapterView<?> adapterView) {

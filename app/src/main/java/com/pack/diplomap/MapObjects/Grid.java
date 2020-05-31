@@ -26,7 +26,6 @@ public class Grid extends MapElement implements Serializable
         elemid = ++MapElement.numInstances + "G";
 
 
-
     }
 
     public Grid()
