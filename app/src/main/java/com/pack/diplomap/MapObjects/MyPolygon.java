@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
+import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Region;
 
@@ -39,9 +40,7 @@ public class MyPolygon
 
     public void fillMyPolygon(Canvas g)
     {
-
-
-
+        
     }
 
     public boolean contains(Point coord)
@@ -57,26 +56,10 @@ public class MyPolygon
         {
             inside=true;
         }
-
-
-/*
-        RectF figureLocationF = new RectF();
-        path.computeBounds(figureLocationF, true);
-        Rect figureLocation = new Rect((int)Math.floor(figureLocationF.left), (int)Math.floor(figureLocationF.top)
-                ,(int)Math.ceil(figureLocationF.right), (int)Math.ceil(figureLocationF.bottom));
-
-
-        Rect bounds = new Rect();
-        Region region = new Region();
-        region.setPath(path, new Region(figureLocation));
-        region.getBounds(bounds);
-        if (region.contains(coord.x,coord. y))
-        {
-            inpol=true;
-        }
-*/
+        else
+        {inside=false;}
         return inside;
-       // return  true;
+
     }
 
     public ArrayList<MyPoint> getPoints() {

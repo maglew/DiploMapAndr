@@ -3,6 +3,7 @@ package com.pack.diplomap.MapObjects;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Point;
 
 
 import java.io.Serializable;
@@ -82,5 +83,12 @@ public class Wall extends MapElement implements Serializable
     {
         this.id = id;
     }
+
+    @Override
+    public boolean touchhit(Point coord)
+    {
+        return false;
+    }
+
 
 }

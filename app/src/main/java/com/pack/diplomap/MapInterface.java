@@ -22,7 +22,7 @@ public class MapInterface
     public void tick()
     {
         if(TouchManager.isTouched()&&regime!="move")
-        chosedObjId= MapPanel.drawmap.floors.get(MapPanel.drawmap.selectedfloor).drawObjects.searchObjByCoord(new Point(TouchManager.getTouchdown().x, TouchManager.getTouchdown().y));
+        chosedObjId= MapPanel.drawmap.floors.get(MapPanel.drawmap.selectedfloor).drawObjects.searchObjByCoord(new Point(TouchManager.getReltouchdown().x, TouchManager.getReltouchdown().y));
     }
 
     public void render(Canvas g)
@@ -32,9 +32,6 @@ public class MapInterface
         g.drawText("floor: "+ MapPanel.drawmap.getSelectedfloor(),400,40,p);
         g.drawText("regime:  "+regime,400,50,p);
         g.drawText("objID:  "+chosedObjId,400,60,p);
-
-
-
     }
 
     public static String getRegime() {

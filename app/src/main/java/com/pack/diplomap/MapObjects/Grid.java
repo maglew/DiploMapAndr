@@ -3,6 +3,7 @@ package com.pack.diplomap.MapObjects;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Point;
 import android.graphics.Rect;
 
 
@@ -66,12 +67,13 @@ public class Grid extends MapElement implements Serializable
 
     }
 
-/*
     @Override
-    public  bool touchhit(Point coord)
-{
-    return false;
-}
-*/
+    public boolean touchhit(Point coord)
+    {
+        return false;
+    }
+
+
+
 
 }
