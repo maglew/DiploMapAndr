@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.os.Environment;
 
 import com.pack.diplomap.MapPanel;
+import com.pack.diplomap.gfx.Assets;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -27,7 +28,7 @@ public class DrawMap implements Serializable
 
     public DrawMap()
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 4; i++)
         { floors.add(new DrawMapFloor()); }
 
     }
@@ -101,41 +102,31 @@ MapPanel.log.addtolog(t.toString());
 
     public  void add()
     {
-        floors.get(0).drawObjects.grids.add(new Grid(10, 100));
+        //  floors.get(0).drawObjects.grids.add(new Grid(10, 100));
 
-        floors.get(0).drawObjects.edges.add(new Edge(new MyPoint(100, 100)));
-        floors.get(0).drawObjects.edges.add(new Edge(new MyPoint(200, 100)));
-        floors.get(0).drawObjects.edges.add(new Edge(new MyPoint(200, 200)));
-        floors.get(0).drawObjects.edges.add(new Edge(new MyPoint(100, 200)));
+        floors.get(0).drawObjects.addNewRoom(new MyPoint(100,100) );
 
-        floors.get(0).drawObjects.edges.add(new Edge(new MyPoint(300, 100)));
-        floors.get(0).drawObjects.edges.add(new Edge(new MyPoint(300, 200)));
-        floors.get(0).drawObjects.edges.add(new Edge(new MyPoint(200, 300)));
-        floors.get(0).drawObjects.edges.add(new Edge(new MyPoint(100, 300)));
+        floors.get(0).drawObjects.addNewRoom(new MyPoint(120,200) );
 
+        floors.get(0).drawObjects.addNewRoom(new MyPoint(250,350) );
 
-        floors.get(1).drawObjects.grids.add(new Grid(10, 100));
-
-
-
-        floors.get(2).drawObjects.grids.add(new Grid(10, 100));
-
-/*
-        floors.get(1).drawObjects.edges.add(new Edge(new MyPoint(300, 100)));
-        floors.get(1).drawObjects.edges.add(new Edge(new MyPoint(400, 100)));
-        floors.get(1).drawObjects.edges.add(new Edge(new MyPoint(400, 200)));
-        floors.get(1).drawObjects.edges.add(new Edge(new MyPoint(300, 200)));
-
+        //  floors.get(1).drawObjects.grids.add(new Grid(10, 100));
+        floors.get(0).drawObjects.image= new MapImage(Assets.firstFloor,new MyPoint(0,0) );
+        floors.get(1).drawObjects.image= new MapImage(Assets.secondFloor,new MyPoint(0,0) );
+        floors.get(2).drawObjects.image= new MapImage(Assets.thirdFloor,new MyPoint(0,0) );
+        floors.get(3).drawObjects.image= new MapImage(Assets.forthFloor,new MyPoint(0,0) );
+        /*
+        floors.get(0).drawObjects.image.add(new MapImage(Assets.firstFloor,new MyPoint(0,0) ));
+        floors.get(1).drawObjects.image.add(new MapImage(Assets.secondFloor,new MyPoint(0,0) ));
+        floors.get(2).drawObjects.image.add(new MapImage(Assets.thirdFloor,new MyPoint(0,0) ));
+        floors.get(3).drawObjects.image.add(new MapImage(Assets.forthFloor,new MyPoint(0,0) ));
 */
-        floors.get(0).drawObjects.rooms.add(new Room(floors.get(0).drawObjects.edges.get(0), floors.get(0).drawObjects.edges.get(1),
-                floors.get(0).drawObjects.edges.get(2), floors.get(0).drawObjects.edges.get(3)));
-
-
-
+        //   floors.get(2).drawObjects.grids.add(new Grid(10, 100));
 
         floors.get(0).drawObjects.rasst();
         floors.get(1).drawObjects.rasst();
         floors.get(2).drawObjects.rasst();
+        floors.get(3).drawObjects.rasst();
     }
 
     public int getSelectedfloor() {

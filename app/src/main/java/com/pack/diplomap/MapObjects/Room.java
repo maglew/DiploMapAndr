@@ -19,7 +19,10 @@ public class Room extends MapElement implements Serializable
     public ArrayList<Edge> edges = new ArrayList<>();
     public ArrayList<MyPoint> dest = new ArrayList<>();
 
-    MyPoint razn = new MyPoint(0, 0);
+    public static int Statnumber=0;
+    public  int number=0;
+    public String name="";
+    public RoomInfo roomInfo;
 
     public Room(Edge A, Edge B, Edge C, Edge D)
     {
@@ -124,8 +127,7 @@ public class Room extends MapElement implements Serializable
     @Override
     public  void render(Canvas g)
     {
-       // g.setColor(Color.WHITE);
-     //   g.drawRect(location.x-5, location.y - 5, 10, 10);
+
         for (int j = 0; j < edges.size() ; j++)
         {
             edges.get(j).render(g);

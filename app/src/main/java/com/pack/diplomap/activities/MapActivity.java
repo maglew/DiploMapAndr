@@ -2,6 +2,8 @@ package com.pack.diplomap.activities;
 
 import android.app.Activity;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -11,6 +13,7 @@ import android.widget.Spinner;
 import com.pack.diplomap.GameManager;
 import com.pack.diplomap.MapObjects.DrawMap;
 import com.pack.diplomap.MapPanel;
+import com.pack.diplomap.gfx.Assets;
 import com.pack.diplommapandr.R;
 
 public class MapActivity extends Activity {
@@ -26,7 +29,7 @@ public class MapActivity extends Activity {
 
         gameManager = new GameManager(this);
         mapPanel = findViewById(R.id.canvasPanelSing);
-
+        prepareNewGame();
         //prepareNewGame();
         Button addButton = findViewById(R.id.addbutt);
         // Устанавливаем действие по нажатию

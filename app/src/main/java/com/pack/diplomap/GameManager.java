@@ -1,6 +1,11 @@
 package com.pack.diplomap;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
+import com.pack.diplomap.gfx.Assets;
+import com.pack.diplommapandr.R;
 
 
 public class GameManager
@@ -12,10 +17,11 @@ public class GameManager
     {
         this.MA=MA;
         //  Options.startupOptions();
+
     }
     public   void game_init()
     {
-
+        Assets.init2(MA);
     }
 
 
