@@ -161,7 +161,6 @@ public class Room extends MapElement implements Serializable
     }
 
 
-
     @Override
     public boolean touchhit(Point coord)
     {

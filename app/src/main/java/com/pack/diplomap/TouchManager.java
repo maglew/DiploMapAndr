@@ -54,7 +54,7 @@ public class TouchManager
               switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
             {   touchdown=new MyPoint((int)event.getX(),(int)event.getY());
-                reltouchdown=new MyPoint((int)(event.getX()-MapPanel.mapCamera.getWorldloc().x)/round((int)MapPanel.mapCamera.getSize()),(int)(event.getY()-MapPanel.mapCamera.getWorldloc().y)/round((int)MapPanel.mapCamera.getSize()));
+                reltouchdown=new MyPoint(round((event.getX()- MapPanel.mapCamera.getWorldloc().x)/(MapPanel.mapCamera.getSize())), round((event.getY()-MapPanel.mapCamera.getWorldloc().y)/(MapPanel.mapCamera.getSize())));
                 touchup=new MyPoint(0,0);
                 reltouchup=new MyPoint(0,0);
                 touched=true;
@@ -64,7 +64,7 @@ public class TouchManager
             {
                 touchup=new MyPoint((int)event.getX(),(int)event.getY());
                  grab=new MyPoint(0,0);
-                reltouchup=new MyPoint((int)(event.getX()-MapPanel.mapCamera.getWorldloc().x)/round((int)MapPanel.mapCamera.getSize()),(int)(event.getY()-MapPanel.mapCamera.getWorldloc().y)/round((int)MapPanel.mapCamera.getSize()));
+                reltouchup=new MyPoint(round((event.getX()- MapPanel.mapCamera.getWorldloc().x)/(MapPanel.mapCamera.getSize())), round((event.getY()-MapPanel.mapCamera.getWorldloc().y)/(MapPanel.mapCamera.getSize())));
                 relgrab=new MyPoint(0,0);
                 touched=false;
                 }
@@ -73,7 +73,7 @@ public class TouchManager
             {
                 grab=new MyPoint((int)event.getX(),(int)event.getY());
                 touchup=new MyPoint(0,0);
-                relgrab=new MyPoint((int)(event.getX()-MapPanel.mapCamera.getWorldloc().x)/round((int)MapPanel.mapCamera.getSize()),(int)(event.getY()-MapPanel.mapCamera.getWorldloc().y)/round((int)MapPanel.mapCamera.getSize()));
+                relgrab=new MyPoint(round((event.getX()- MapPanel.mapCamera.getWorldloc().x)/(MapPanel.mapCamera.getSize())), round((event.getY()-MapPanel.mapCamera.getWorldloc().y)/(MapPanel.mapCamera.getSize())));
                 reltouchup=new MyPoint(0,0);
 
             }
