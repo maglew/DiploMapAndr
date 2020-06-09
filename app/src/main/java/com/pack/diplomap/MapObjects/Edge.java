@@ -34,7 +34,6 @@ public class Edge extends MapElement implements Serializable
 
     public Edge()
     {
-
         this.movable = true;
 
         location = new MyPoint(0,0);

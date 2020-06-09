@@ -13,23 +13,17 @@ import java.util.ArrayList;
 public abstract class MapElement implements Serializable
 {
     private static final long serialVersionUID = -3515152604847457796L;
-    public MyPoint location = new MyPoint(0, 0);
     public ArrayList<MyPoint> touchzone = new ArrayList<>();
-    MyPolygon polygon;
     public boolean deletable = true;
-
-
-
+    public MyPoint location = new MyPoint(0, 0);
     public int width = 10;
-
+    RoomInfo roomInfo;
     public String elemid;
     public static int numInstances;
-
-    //   public int size = 0;
     //  public int rotation;
     public boolean movable = true;
 
-
+    transient MyPolygon polygon;
 
     public  void tick()
 {
@@ -65,5 +59,10 @@ public abstract class MapElement implements Serializable
     public  void setedgescount(int count)
     {
 
+    }
+
+    public RoomInfo getRoomInfo()
+    {
+        return  roomInfo;
     }
 }

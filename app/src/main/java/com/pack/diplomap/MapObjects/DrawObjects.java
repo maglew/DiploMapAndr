@@ -11,7 +11,6 @@ import java.util.Iterator;
 public class DrawObjects implements Serializable
 {
     private static final long serialVersionUID = -8515152604847457796L;
-
     public  ArrayList<MapElement> elements = new ArrayList<>();
     public  ArrayList<Edge> edges = new ArrayList<>();
     public ArrayList<Grid> grids = new ArrayList<>();
@@ -33,12 +32,10 @@ public class DrawObjects implements Serializable
 
     public  void rasst()
     {
-
         elements.clear();
         elements.add(image);
         elements.addAll(grids);
         elements.addAll(edges);
-        //  elements.addRange(zones);
         elements.addAll(rooms);
         elements.addAll(walls);
 
