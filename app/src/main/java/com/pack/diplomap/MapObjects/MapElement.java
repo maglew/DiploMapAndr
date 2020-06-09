@@ -23,7 +23,7 @@ public abstract class MapElement implements Serializable
     //  public int rotation;
     public boolean movable = true;
 
-    transient MyPolygon polygon;
+ //   transient MyPolygon polygon;
 
     public  void tick()
 {
@@ -50,7 +50,7 @@ public abstract class MapElement implements Serializable
     {
         boolean inpol = false;
 
-        inpol=polygon.contains(coord);
+      //  inpol=polygon.contains(coord);
 
         return inpol;
 

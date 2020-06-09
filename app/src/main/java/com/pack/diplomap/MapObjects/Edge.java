@@ -29,7 +29,7 @@ public class Edge extends MapElement implements Serializable
         this.touchzone.add(2,new MyPoint(location.x   + 10,location.y   + 10));
         this.touchzone.add(3,new MyPoint(location.x   - 10,location.y   +10));
         elemid = ++MapElement.numInstances + "E";
-        polygon=new MyPolygon(touchzone);
+    //    polygon=new MyPolygon(touchzone);
     }
 
     public Edge()
@@ -43,7 +43,7 @@ public class Edge extends MapElement implements Serializable
         this.touchzone.add(2,new MyPoint(location.x   + 10,location.y   + 10));
         this.touchzone.add(3,new MyPoint(location.x   - 10,location.y   +10));
         elemid = ++MapElement.numInstances + "E";
-        polygon=new MyPolygon(touchzone);
+    //    polygon=new MyPolygon(touchzone);
     }
 
 @Override
@@ -77,7 +77,7 @@ public class Edge extends MapElement implements Serializable
         g.drawPath(path,p);
 
 */
-    polygon.drawMyPolygon(g);
+  //  polygon.drawMyPolygon(g);
 }
     @Override
     public  void move(MyPoint coord)

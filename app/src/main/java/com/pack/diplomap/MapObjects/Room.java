@@ -55,17 +55,13 @@ public class Room extends MapElement implements Serializable
         Room.Statnumber++;
         number+=Room.Statnumber;
         roomInfo=new RoomInfo();
-        polygon=new MyPolygon(touchzone);
+       // polygon=new MyPolygon(touchzone);
     }
 
     public Room()
     {
         location = new MyPoint(0, 0);
-        location = location;
-
         this.movable = true;
-        //  this.id = Guid.NewGuid();
-
         this.edges.add(new Edge(new MyPoint(0,0)));
         this.edges.add(new Edge(new MyPoint(0,0)));
         this.edges.add(new Edge(new MyPoint(0,0)));
@@ -91,7 +87,7 @@ public class Room extends MapElement implements Serializable
         }
         elemid =++MapElement.numInstances+"R";
         roomInfo=new RoomInfo();
-        polygon=new MyPolygon(touchzone);
+
     }
 
     @Override
@@ -150,7 +146,7 @@ public class Room extends MapElement implements Serializable
 
  */
 
-        polygon.drawMyPolygon(g);
+      //  polygon.drawMyPolygon(g);
     }
 
     @Override
@@ -169,7 +165,12 @@ public class Room extends MapElement implements Serializable
     @Override
     public boolean touchhit(Point coord)
     {
-        return super.touchhit(coord);
+        boolean inpol = false;
+        MyPolygon polygon;
+        polygon=new MyPolygon(touchzone);
+          inpol=polygon.contains(coord);
+
+        return inpol;
     }
 
     @Override
