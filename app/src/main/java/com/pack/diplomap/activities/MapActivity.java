@@ -91,10 +91,10 @@ public class MapActivity extends Activity {
         Spinner spinner = findViewById(R.id.floorspin);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                int floor = i ;
-                if (MapPanel.drawmap.getSelectedfloor() != floor) {
-                    MapPanel.drawmap.setSelectedfloor(floor);
-                }
+               // int floor = i ;
+
+                    MapPanel.drawmap.setSelectedfloor(i);
+
 
             }
 

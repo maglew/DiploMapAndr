@@ -30,6 +30,7 @@ public class DrawMap implements Serializable
     {
         for (int i = 0; i < 4; i++)
         { floors.add(new DrawMapFloor()); }
+        add();
 
     }
 
@@ -49,7 +50,6 @@ public class DrawMap implements Serializable
         DrawMap newmap=new DrawMap();
         try {
             String root = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS).toString();
-          //  File myfile = new File(root+"/DiplomapAndr" , "TcMap.dat");
             File myfile = new File(root+"/DiplomapAndr" , "DiplomapPc.dat");
             FileInputStream fis = new FileInputStream(myfile);
             ObjectInputStream is = new ObjectInputStream(fis);/////////////
@@ -104,11 +104,11 @@ MapPanel.log.addtolog(t.toString());
     {
         //  floors.get(0).drawObjects.grids.add(new Grid(10, 100));
 
-        floors.get(0).drawObjects.addNewRoom(new MyPoint(100,100) );
+     //   floors.get(0).drawObjects.addNewRoom(new MyPoint(100,100) );
 
-        floors.get(0).drawObjects.addNewRoom(new MyPoint(120,200) );
+     //   floors.get(0).drawObjects.addNewRoom(new MyPoint(120,200) );
 
-        floors.get(0).drawObjects.addNewRoom(new MyPoint(250,350) );
+     //   floors.get(0).drawObjects.addNewRoom(new MyPoint(250,350) );
 
         //  floors.get(1).drawObjects.grids.add(new Grid(10, 100));
         floors.get(0).drawObjects.image= new MapImage(Assets.firstFloor,new MyPoint(0,0) );
