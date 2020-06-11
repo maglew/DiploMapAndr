@@ -62,9 +62,9 @@ public class Edge extends MapElement implements Serializable
     p.setColor(Color.YELLOW);
     g.drawRect(location.x - 5 , location.y - 5 , location.x+5 , location.y+5  ,p);
 
-  //  p.setColor(Color.RED);
+    p.setColor(Color.RED);
 
-/*
+
     Path path=new Path();
     path.moveTo(touchzone.get(0).x,touchzone.get(0).y);
     for(int i=1;i<touchzone.size();i++)
@@ -76,7 +76,7 @@ public class Edge extends MapElement implements Serializable
         path.close();
         g.drawPath(path,p);
 
-*/
+
   //  polygon.drawMyPolygon(g);
 }
     @Override

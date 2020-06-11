@@ -55,7 +55,8 @@ public class DrawMap implements Serializable
             ObjectInputStream is = new ObjectInputStream(fis);/////////////
 
             newmap=(DrawMap)is.readObject();
-
+            newmap.add();
+            selectedfloor=0;
             is.close();
             fis.close();
 
@@ -102,31 +103,20 @@ MapPanel.log.addtolog(t.toString());
 
     public  void add()
     {
-        //  floors.get(0).drawObjects.grids.add(new Grid(10, 100));
+        floors.get(0).drawObjects.addPointer((new MyPoint(0,0) ));
+        floors.get(1).drawObjects.addPointer((new MyPoint(0,0) ));
+        floors.get(2).drawObjects.addPointer((new MyPoint(0,0) ));
+        floors.get(3).drawObjects.addPointer((new MyPoint(0,0) ));
 
-     //   floors.get(0).drawObjects.addNewRoom(new MyPoint(100,100) );
-
-     //   floors.get(0).drawObjects.addNewRoom(new MyPoint(120,200) );
-
-     //   floors.get(0).drawObjects.addNewRoom(new MyPoint(250,350) );
-
-        //  floors.get(1).drawObjects.grids.add(new Grid(10, 100));
         floors.get(0).drawObjects.image= new MapImage(Assets.firstFloor,new MyPoint(0,0) );
         floors.get(1).drawObjects.image= new MapImage(Assets.secondFloor,new MyPoint(0,0) );
         floors.get(2).drawObjects.image= new MapImage(Assets.thirdFloor,new MyPoint(0,0) );
         floors.get(3).drawObjects.image= new MapImage(Assets.forthFloor,new MyPoint(0,0) );
-        /*
-        floors.get(0).drawObjects.image.add(new MapImage(Assets.firstFloor,new MyPoint(0,0) ));
-        floors.get(1).drawObjects.image.add(new MapImage(Assets.secondFloor,new MyPoint(0,0) ));
-        floors.get(2).drawObjects.image.add(new MapImage(Assets.thirdFloor,new MyPoint(0,0) ));
-        floors.get(3).drawObjects.image.add(new MapImage(Assets.forthFloor,new MyPoint(0,0) ));
-*/
-        //   floors.get(2).drawObjects.grids.add(new Grid(10, 100));
 
-        floors.get(0).drawObjects.rasst();
-        floors.get(1).drawObjects.rasst();
-        floors.get(2).drawObjects.rasst();
-        floors.get(3).drawObjects.rasst();
+        floors.get(0).drawObjects.clearadd();
+        floors.get(1).drawObjects.clearadd();
+        floors.get(2).drawObjects.clearadd();
+        floors.get(3).drawObjects.clearadd();
     }
 
     public int getSelectedfloor() {

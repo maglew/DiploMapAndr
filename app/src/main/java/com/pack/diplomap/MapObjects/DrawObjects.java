@@ -17,10 +17,11 @@ public class DrawObjects implements Serializable
     public ArrayList<Room> rooms = new ArrayList<>();
     public ArrayList<Wall> walls = new ArrayList<>();
     public  MapImage image=new MapImage();
-
+    // public ArrayList<MyPointer> myPointers = new ArrayList<>();
+    public transient MyPointer pointer=new MyPointer();
     public DrawObjects()
     {
-        rasst();
+        clearadd();
     }
 
 
@@ -30,15 +31,15 @@ public class DrawObjects implements Serializable
     }
 
 
-    public  void rasst()
+    public  void clearadd()
     {
         elements.clear();
         elements.add(image);
-        elements.addAll(grids);
+        // elements.addAll(grids);
         elements.addAll(edges);
         elements.addAll(rooms);
         elements.addAll(walls);
-
+        //  elements.add(pointer);
     }
 
 
@@ -56,6 +57,7 @@ public class DrawObjects implements Serializable
         {
             me.render(g);
         }
+        pointer.render(g);
     }
 
 
@@ -106,13 +108,16 @@ public class DrawObjects implements Serializable
         }
     }
 
-
+    public  void addPointer(MyPoint myPoint)
+    {
+        pointer=new MyPointer(myPoint);
+        //   clearadd();
+    }
 
     public  void addNewEdge(MyPoint coord)
     {
-        // elements.add(new com.com.pack.diplommapandr.Edge(coord));
         edges.add(new Edge(coord));
-        rasst();
+        clearadd();
     }
 
 
@@ -123,13 +128,13 @@ public class DrawObjects implements Serializable
         edges.add(new Edge(new MyPoint(coord.x + 50, coord.y + 50)));
         edges.add(new Edge(new MyPoint(coord.x - 50, coord.y + 50)));
         rooms.add(new Room(edges.get(edges.size()-4), edges.get(edges.size() - 3), edges.get(edges.size() - 2), edges.get(edges.size() - 1)));
-        rasst();
+        clearadd();
     }
 
     public  void addNewWall(int a, int b)
     {
         walls.add(new Wall(edges.get(a-1),edges.get(b-1)));
-        rasst();
+        clearadd();
     }
 
 }
