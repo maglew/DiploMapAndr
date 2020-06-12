@@ -26,6 +26,24 @@
             android:orientation="vertical">
 
             <Button
+                android:id="@+id/savebutt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="save" />
+
+            <Button
+                android:id="@+id/loadbutt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="load" />
+
+            <Button
+                android:id="@+id/addbutt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="add" />
+
+            <Button
                 android:id="@+id/zoominbutt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

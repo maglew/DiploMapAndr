@@ -28,10 +28,10 @@
                 android:text="Карта" />
 
             <Button
-                android:id="@+id/optbutt"
+                android:id="@+id/testbutt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Настройки" />
+                android:text="Тест" />
 
             <Button
                 android:id="@+id/exitbutt"

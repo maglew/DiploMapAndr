@@ -27,13 +27,13 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
-        Button SettingsButton = findViewById(R.id.optbutt);
+        Button TestButton = findViewById(R.id.testbutt);
         // Устанавливаем действие по нажатию
-        SettingsButton.setOnClickListener(new View.OnClickListener() {
+        TestButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                Intent SecAct = new Intent(getApplicationContext(), OptionsActivity.class);
+                Intent SecAct = new Intent(getApplicationContext(), TestActivity.class);
                 startActivity(SecAct);
             }
         });
