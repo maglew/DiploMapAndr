@@ -24,7 +24,7 @@ public class MapPanel extends SurfaceView implements SurfaceHolder.Callback
     int size=1;
     TouchManager touchManager;
     public static   MapCamera mapCamera;
-    public static MapInterface mapInterface;
+    public  MapInterface mapInterface;
     public static Logs log;
     public static int exception=0;
 
@@ -73,14 +73,19 @@ public class MapPanel extends SurfaceView implements SurfaceHolder.Callback
         canvas.drawColor(Color.BLACK);
         Paint  paint=new Paint();
         paint.setColor(Color.WHITE);
-        canvas.drawText("exception: "+exception,400,100,p);
-        touchManager.render(canvas);
-        mapCamera.render(canvas);
-        mapInterface.render(canvas);
+
 
         canvas.translate(mapCamera.getWorldloc().x,mapCamera.getWorldloc().y);
         canvas.scale(mapCamera.getSize(),mapCamera.getSize());
         drawmap.render(canvas);
+
+        canvas.restore();
+        Paint p2=new Paint();
+        p2.setColor(Color.RED);
+        canvas.drawText("exception: "+exception,400,100,p);
+        touchManager.render(canvas);
+        mapCamera.render(canvas);
+        mapInterface.render(canvas);
 
     }
 

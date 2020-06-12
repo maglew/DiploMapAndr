@@ -24,5 +24,7 @@ public class GameManager
         Assets.init2(MA);
     }
 
-
+    public Activity getMA() {
+        return MA;
+    }
 }

@@ -14,7 +14,7 @@
         android:layout_height="match_parent" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="131dp"
         android:layout_height="match_parent"
         android:gravity="center|right"
         android:orientation="horizontal">
@@ -25,23 +25,38 @@
             android:gravity="center"
             android:orientation="vertical">
 
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#591010"
+                android:backgroundTint="#9E1414"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <Button
+                android:id="@+id/findbutt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="найти" />
+
             <Button
                 android:id="@+id/zoominbutt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="zoomin" />
+                android:text="приблизить" />
 
             <Button
                 android:id="@+id/zoomoutbutt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="zoomout" />
+                android:text="отдалить" />
 
             <Button
                 android:id="@+id/regimebutt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="regime" />
+                android:text="режим" />
 
             <Spinner
                 android:id="@+id/floorspin"

@@ -31,8 +31,10 @@ public class MapInterface
           if(MapPanel.drawmap.floors.get(MapPanel.drawmap.selectedfloor).drawObjects.getElement(chosedObjId) instanceof Room &&chosedObjId!=-1)
           {
             roomInfo=MapPanel.drawmap.floors.get(MapPanel.drawmap.selectedfloor).drawObjects.getElement(chosedObjId).getRoomInfo();
+
+
           }
-            //  MapActivity.opendialog()
+
         }
     }
 
@@ -46,11 +48,11 @@ public class MapInterface
 
         if(regime!="move")
         {
-            g.drawText("number:  "+roomInfo.getNumber(),400,90,p);
-            g.drawText("name:  "+roomInfo.getName(),400,100,p);
-            g.drawText("descr:  "+roomInfo.getDescription(),400,110,p);
-            g.drawText("site:  "+roomInfo.getSite(),400,120,p);
-            g.drawText("tel:  "+roomInfo.getTelephone(),400,130,p);
+            g.drawText("number:  "+roomInfo.getNumber(),400,145,p);
+            g.drawText("name:  "+roomInfo.getName(),400,155,p);
+            g.drawText("descr:  "+roomInfo.getDescription(),400,165,p);
+            g.drawText("site:  "+roomInfo.getSite(),400,175,p);
+            g.drawText("tel:  "+roomInfo.getTelephone(),400,185,p);
         }
     }
 

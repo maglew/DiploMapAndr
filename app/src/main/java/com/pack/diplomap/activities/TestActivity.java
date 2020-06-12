@@ -76,10 +76,10 @@ public class TestActivity extends Activity {
         regimebutt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (MapPanel.mapInterface.getRegime() == "move")
-                    MapPanel.mapInterface.setRegime("touch");
+                if (mapPanel.mapInterface.getRegime() == "move")
+                    mapPanel.mapInterface.setRegime("touch");
                 else
-                    MapPanel.mapInterface.setRegime("move");
+                    mapPanel.mapInterface.setRegime("move");
             }
         });
 
