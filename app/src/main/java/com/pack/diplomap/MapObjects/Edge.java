@@ -58,26 +58,27 @@ public class Edge extends MapElement implements Serializable
 @Override
     public  void render(Canvas g)
 {
-    Paint p=new Paint();
-    p.setColor(Color.YELLOW);
-    g.drawRect(location.x - 5 , location.y - 5 , location.x+5 , location.y+5  ,p);
+    if(MapPanel.drawing) {
+        Paint p = new Paint();
+        p.setColor(Color.YELLOW);
+        g.drawRect(location.x - 5, location.y - 5, location.x + 5, location.y + 5, p);
 
-    p.setColor(Color.RED);
+        p.setColor(Color.RED);
 
 
-    Path path=new Path();
-    path.moveTo(touchzone.get(0).x,touchzone.get(0).y);
-    for(int i=1;i<touchzone.size();i++)
-    {
-        path.lineTo(touchzone.get(i).x,touchzone.get(i).y);
+        Path path = new Path();
+        path.moveTo(touchzone.get(0).x, touchzone.get(0).y);
+        for (int i = 1; i < touchzone.size(); i++) {
+            path.lineTo(touchzone.get(i).x, touchzone.get(i).y);
 
-    }
-        path.lineTo(touchzone.get(touchzone.size()-1).x,touchzone.get(touchzone.size()-1).y);
+        }
+        path.lineTo(touchzone.get(touchzone.size() - 1).x, touchzone.get(touchzone.size() - 1).y);
         path.close();
-        g.drawPath(path,p);
+        g.drawPath(path, p);
 
 
-  //  polygon.drawMyPolygon(g);
+        //  polygon.drawMyPolygon(g);
+    }
 }
     @Override
     public  void move(MyPoint coord)

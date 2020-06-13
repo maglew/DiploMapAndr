@@ -26,6 +26,7 @@ import com.pack.diplomap.gfx.Assets;
 import com.pack.diplommapandr.R;
 
 public class MapActivity extends Activity {
+
     MapPanel mapPanel;
     final int DIALOG = 1;
     static RoomInfo roomInfo = new RoomInfo();
@@ -40,7 +41,7 @@ public class MapActivity extends Activity {
 
         gameManager = new GameManager(this);
         mapPanel = findViewById(R.id.canvasPanelSing);
-
+        MapPanel.drawing=false;
         prepareNewGame();
         MapPanel.drawmap.loadmap();
         //prepareNewGame();

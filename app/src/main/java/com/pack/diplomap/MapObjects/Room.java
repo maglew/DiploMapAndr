@@ -121,19 +121,17 @@ public class Room extends MapElement implements Serializable
     @Override
     public  void render(Canvas g)
     {
+        if(MapPanel.drawing) {
+            for (int j = 0; j < edges.size(); j++) {
+                edges.get(j).render(g);
 
-        for (int j = 0; j < edges.size() ; j++)
-        {
-            edges.get(j).render(g);
-
-        }
+            }
 
 
-        for (int j = 0; j < walls.size() ; j++)
-        {
-            walls.get(j).render(g);
+            for (int j = 0; j < walls.size(); j++) {
+                walls.get(j).render(g);
 
-        }
+            }
 /*
         g.setColor(Color.red);
         Polygon poly=new Polygon();
@@ -146,7 +144,8 @@ public class Room extends MapElement implements Serializable
 
  */
 
-      //  polygon.drawMyPolygon(g);
+            //  polygon.drawMyPolygon(g);
+        }
     }
 
     @Override

@@ -35,7 +35,8 @@ public class TouchManager
 
     public void render(Canvas canvas)
     {
-        Paint p=new Paint();
+        if(MapPanel.drawing)
+        { Paint p=new Paint();
         p.setColor(Color.GREEN);
       //  canvas.drawText("touchcoord"+touchcoord.toString(),100,415,p);
         canvas.drawText("downcoord: "+touchdown.x+"."+touchdown.y,400,70,p);
@@ -44,7 +45,7 @@ public class TouchManager
 
         canvas.drawText("reldowncoord: "+reltouchdown.x+"."+reltouchdown.y,400,110,p);
         canvas.drawText("relupcoord: "+reltouchup.x+"."+reltouchup.y,400,120,p);
-        canvas.drawText("relgrabcoord: "+relgrab.x+"."+relgrab.y,400,130,p);
+        canvas.drawText("relgrabcoord: "+relgrab.x+"."+relgrab.y,400,130,p);}
     }
 
     public void setevent(MotionEvent event)

@@ -24,6 +24,7 @@ public class TestActivity extends Activity {
 
         gameManager = new GameManager(this);
         mapPanel = findViewById(R.id.canvasPanelSing);
+        MapPanel.drawing=true;
         prepareNewGame();
         //prepareNewGame();
         Button addButton = findViewById(R.id.addbutt);

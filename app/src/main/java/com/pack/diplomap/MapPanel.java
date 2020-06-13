@@ -16,9 +16,7 @@ import com.pack.diplomap.MapObjects.DrawMap;
 
 public class MapPanel extends SurfaceView implements SurfaceHolder.Callback
 {
-
-    boolean moveRegime=true;
-
+    public static boolean drawing;
     private MainThread mainThread;
     public static DrawMap drawmap ;
     int size=1;
