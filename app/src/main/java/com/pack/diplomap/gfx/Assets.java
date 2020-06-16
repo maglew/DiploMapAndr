@@ -12,6 +12,7 @@ import java.io.ByteArrayOutputStream;
 public class Assets
 {
     public static Bitmap firstFloor, secondFloor, thirdFloor, forthFloor;
+    public static Bitmap firstlegend, secondlegend, thirdlegend, forthlegend;
 
     public static void init(Bitmap sheet)
     {
@@ -28,32 +29,19 @@ public class Assets
 
     public static void init2(Activity MA)
     {
-        /*
-        SpriteSheet first = new SpriteSheet(Bitmap.createBitmap(BitmapFactory.decodeResource(MA.getResources(), R.drawable.firstfloor)));
-        SpriteSheet second = new SpriteSheet(Bitmap.createBitmap(BitmapFactory.decodeResource(MA.getResources(), R.drawable.secondfloor)));
-        SpriteSheet third = new SpriteSheet(Bitmap.createBitmap(BitmapFactory.decodeResource(MA.getResources(), R.drawable.thirdfloor)));
-        SpriteSheet fourth = new SpriteSheet(Bitmap.createBitmap(BitmapFactory.decodeResource(MA.getResources(), R.drawable.fourthfloor)));
-*/
 
         firstFloor = Bitmap.createBitmap(BitmapFactory.decodeResource(MA.getResources(), R.drawable.firstfloor));
         secondFloor = Bitmap.createBitmap(BitmapFactory.decodeResource(MA.getResources(), R.drawable.secondfloor));
         thirdFloor = Bitmap.createBitmap(BitmapFactory.decodeResource(MA.getResources(), R.drawable.thirdfloor));
         forthFloor = Bitmap.createBitmap(BitmapFactory.decodeResource(MA.getResources(), R.drawable.fourthfloor));
 
+        /*
+        firstlegend = Bitmap.createBitmap(BitmapFactory.decodeResource(MA.getResources(), R.drawable.legfirst));
+        secondlegend = Bitmap.createBitmap(BitmapFactory.decodeResource(MA.getResources(), R.drawable.legsecond));
+        thirdlegend = Bitmap.createBitmap(BitmapFactory.decodeResource(MA.getResources(), R.drawable.legthird));
+        forthlegend = Bitmap.createBitmap(BitmapFactory.decodeResource(MA.getResources(), R.drawable.legfourth));
+*/
 
-/*
-        firstFloor = first.getSheet();
-        secondFloor = second.getSheet();
-        thirdFloor = third.getSheet();
-        forthFloor = fourth.getSheet();
-        */
-/*
-        firstFloor = first.compress(50);
-        secondFloor = second.compress(50);
-        thirdFloor = third.compress(50);
-        forthFloor = fourth.compress(50);
-
- */
 
 
         firstFloor = Bitmap.createScaledBitmap(firstFloor, 2685, 2469, false);
